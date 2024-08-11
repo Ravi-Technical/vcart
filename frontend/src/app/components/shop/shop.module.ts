@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ShopRoutingModule } from './shop-routing.module';
 import { ProductsComponent } from './products/products.component';
-import { NgxSliderModule } from '@angular-slider/ngx-slider';
+// import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ViewcartComponent } from './viewcart/viewcart.component';
@@ -26,7 +26,7 @@ import { FilterPipe } from 'src/app/components/shop/filter.pipe';
   imports: [
     CommonModule,
     ShopRoutingModule,
-    NgxSliderModule,
+    // NgxSliderModule,
     FormsModule,
     NgxPaginationModule
   ]

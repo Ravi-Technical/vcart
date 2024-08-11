@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { SellerService } from 'src/app/@core/seller.service';
-import { Options } from '@angular-slider/ngx-slider';
+// import { Options } from '@angular-slider/ngx-slider';
 import { ProductService } from 'src/app/@core/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -35,10 +35,10 @@ export class ProductsComponent {
 
   arrowIcon:boolean = false;brandIcon:boolean = false; sizeFlag:boolean = false;
 
-  options: Options = {
-    floor: 0,
-    ceil: 1000
-  };
+  // options: Options = {
+  //   floor: 0,
+  //   ceil: 1000
+  // };
 
   searchProducts:any = [];
 
