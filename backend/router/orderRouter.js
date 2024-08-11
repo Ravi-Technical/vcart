@@ -9,7 +9,6 @@ const userModel = require('../models/userModel');
 
 // Order API 
 router.post('/order', async (req, res) => {
-  console.log(req.body);
   let d = new Date();
   let date = ("0" + d.getDate()).slice(-2);
   let month = ("0" + (d.getMonth() + 1)).slice(-2);
@@ -284,6 +283,7 @@ router.post('/order', async (req, res) => {
 
     mailTranspoter.sendMail(mailOptions, async (err, sendData) => {
       if (err) {
+        console.log(err);
         res.status(200).json({ message: "Something is missing" });
         return;
       } else {

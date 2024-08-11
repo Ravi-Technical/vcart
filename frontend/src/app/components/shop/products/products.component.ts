@@ -96,7 +96,6 @@ export class ProductsComponent {
           this.cloneProduct = [];
           this.cloneProduct = res ? res : [""];
           this.resultData = this.cloneProduct;
-          console.log("Search result => ", this.resultData);
           let product_wraper:any = (document.getElementById('product-listing')!);
           let searchProduct:any = (document.getElementById('searchProduct')!);
           product_wraper.style.display="none";
@@ -126,8 +125,6 @@ export class ProductsComponent {
     this.sellerService.getAllProducts().subscribe(res=>{
     this.tempAllProduct = res ? res : [""];
     this.wholeProducts =  res ? res : [""];
-    console.log("this.tempAllProduct", this.tempAllProduct);
-    console.log("this.wholeProducts", this.wholeProducts);
    })
  }
 // Get ALL Category
