@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit{
   // Login Form
   userLogin(loginData:userLoginModel){
    this.dataSource.genericUserLogin(loginData).subscribe((res:any)=>{
-    console.log(res)
     if(res.success !== false){
       this.dataSource.isUserLoggedIn.next(res[0]);
       localStorage.setItem('userName', res[0]);
@@ -88,7 +87,6 @@ export class LoginComponent implements OnInit{
  // Check Email Address Exists OR Not
  findEmail(email:string){
    this.dataSource.allAuthorizedUser().subscribe((res)=>{
-     
    })
  } 
  
