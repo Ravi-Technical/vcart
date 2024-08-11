@@ -24,7 +24,7 @@ export class ProductService {
 
   searchData = new Subject<string>();
   
-  apiUrl = "http://localhost:3000/api/v1";
+  apiUrl = "https://vcart-backend-1kvp.onrender.com/api/v1";
 
   testApi = 'http://localhost:4000/upload';
 
