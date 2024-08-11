@@ -1,0 +1,80 @@
+
+ .login-wraper{
+    background: url('../../../../assets/login-background.png')no-repeat;
+    background-size: cover;width:100%;height:100vh;
+ }
+
+ .form-control:focus {
+    outline: none;
+    box-shadow: none;
+}
+button:active {
+    background: #fbb03b !important;
+    color: #fff !important;
+}
+
+span.loginPassword {
+    transform: translate(13rem, 0px);
+}
+
+span.eye-hideShow {
+    position: absolute;
+    left: 7.5rem;
+    margin: -1.8rem 0 0 0;
+}
+span.eye-hideShow .fa{cursor: pointer;color: #444;}
+ .login-inner {
+    transform: translate(-3rem, 6rem);
+}
+.body-area input, .body-area textarea {
+    font-size: 12px;
+    color: #444;
+    border-radius: 2px;
+    padding: 7px 10px;
+}
+.text-right {
+    font-size: 14px;
+    cursor: pointer;
+    position: absolute;
+    right: 0%;
+    top: 0.3rem;
+}
+
+.header-area {display: flex;}
+
+input.form-control:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.text-right{font-size: 14px; cursor: pointer; }
+
+.login-inner p {
+    font-size: 12px;
+    margin: -5px 0 0 0;
+    padding: 0;
+    color: #7c7979;
+}
+
+.body-area h4 {
+    transform: translate(0px, 11rem);
+    color: #6c58ef;
+    cursor: pointer;
+    font-size: 13px !important;
+}
+
+
+.btn {
+    border-radius: 2rem;
+    text-transform: uppercase;
+    border: none;position: relative;
+    top: 2rem;
+    padding: 13px 50px;
+    font-size: 12px;width: auto;
+    margin: 0 auto;color: #fff;
+    background-color: #6333d7;
+}
+input.form-control::placeholder, textarea.form-control::placeholder {
+    color: #7a7777;
+    font-weight: 300;
+}

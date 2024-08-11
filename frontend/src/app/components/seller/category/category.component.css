@@ -1,0 +1,94 @@
+
+*{ font-family: "Poppins", sans-serif;}
+
+section.seller-dashboard {
+    padding: 50px; font-family: "Poppins", sans-serif;
+    background: #ddddddbd;
+}
+.content-dashboard {
+    background-color: #fff;
+    height: 100vh;
+    border-radius: 0px 10px 10px 0px;
+    padding: 30px;
+}
+
+section.add-product-page h4 {
+    font-size: 18px;background-color: #c5e1f1;
+    margin-bottom: 2rem;
+}
+
+section.add-product-page input {
+    font-size: 12px;
+    border-radius: 3px;
+    color: #222;
+}
+
+.content-dashboard .btn {
+    color: #fff !important;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 6px 30px;
+}
+
+section.add-product-page th {
+    font-size: 13px;color: #555;
+}
+
+.table-responsive td {
+    font-size: 12px;
+}
+
+a.btn {
+    font-size: 12px;
+    margin: 0 10px 0 0px;
+    padding: 4px 10px !important;
+    border-radius: 2px;cursor: pointer;
+}
+
+.btn{cursor: pointer;}
+
+section.add-product-page p {
+    font-size: 14px;
+    margin: 1rem 0 10px 0;
+    padding: 0;
+    color: #666;
+}
+
+.table-responsive{
+    height: 35vh;
+}
+
+.heightClass {height:45vh;}
+
+p{padding-left: 20px;}
+
+.sucees-message {
+    font-size: 16px;
+    background-color: #31e1b8;
+    padding: 10px;
+}
+
+.delete-message {font-size: 16px;padding: 10px;
+    background-color:#f18f8f;
+}
+/* width */
+.table-responsive::-webkit-scrollbar {
+    width:5px;
+  }
+  
+  /* Track */
+  .table-responsive::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  .table-responsive::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+  
+

@@ -1,0 +1,82 @@
+
+.seller-login {
+    background: url('../../../../assets/preview.jpg')no-repeat;
+    height: 90vh;background-size: cover;background-position: center center;width: 100%;padding: 100px 0;
+}
+
+.inner-login{background-color: #fff;
+    box-shadow: 0px 1px 36px 20px #403f3f0f;
+    height: 100%;
+    width: 80%;padding-bottom: 1rem;
+    border-radius: 2px;
+    margin: auto;}
+
+    ul.user-login li {
+        list-style: none;
+        display: inline-block;
+        font-size: 14px;cursor: pointer;
+        font-weight: 500;
+    }
+    ul.user-login {
+        margin: 0;position: relative;
+        top: 1rem;
+        right: 1rem;
+        padding: 0;
+        text-align: right;
+    }
+
+    button.btn.btn-primary {
+        border-radius: 2rem;text-transform: uppercase;border: none;
+        padding: 13px 30px;font-size: 12px;background-color: #6333d7;
+    }
+
+    input.form-control {
+        border: 1px solid #ddd;padding: 10px;
+        border-radius: 2px;font-size:12px;
+        margin: 0px 0 1rem 0;width:90%;
+    }
+
+    textarea {
+        border: 1px solid #ddd;padding: 10px;
+        border-radius: 2px;font-size:12px;
+        margin: 0px 0 1rem 0;width: 95.2%;
+    }
+
+    .form-area {
+        position: relative;
+        top: 4rem;
+        vertical-align: middle;
+    }
+
+    h2 {
+        font-weight: 600;
+    }
+
+    .form-area p {
+        font-size: 12px;
+        color: #777;
+    }
+
+  .eye-hideShow i {cursor: pointer;}
+
+  span.eye-hideShow {
+    position: absolute;
+    left: 10.7rem;
+    margin: -3rem 0 0 0;
+}
+span.loginForm {
+    transform: translate(16rem, 0px);
+}
+
+.form-area a {
+    float: right;
+    position: relative;
+    right: 4rem;
+    bottom: 2rem;
+    font-size: 14px;
+}
+
+.inner-login img {
+    margin: auto;
+    display: block;
+}

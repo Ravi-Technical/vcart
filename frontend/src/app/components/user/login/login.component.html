@@ -1,0 +1,76 @@
+ <section class="login-wraper">
+   <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-3 col-lg-3 col-md-hidden col-sm-hidden col-hidden"></div>
+        <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="login-inner">
+                <div class="header-area">
+                    <h5>Welcome <span style="color: #6333d7;">Back</span></h5>
+                    <h6 class="text-right">
+                    <span (click)="loginRegisterToggle()">New User? </span>
+                    <span style="color: #6333d7;" (click)="loginRegisterToggle()">Login</span>
+                    </h6>
+                </div>
+                 <!-- Register Form -->
+                <div class="body-area" *ngIf="!loginRegister">
+                  <p>New user sign up</p>
+                  <form class="mt-4" [formGroup]="userReg" (ngSubmit)="userRegister(userReg)">
+                      <div class="row">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 pl-0">
+                              <input type="text" formControlName="name" class="form-control" placeholder="Name" required>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 pl-0 mt-3">
+                              <input type="email" #emailId (change)="findEmail(emailId.value)" formControlName="email" class="form-control" placeholder="Email Address" required>
+                              <span>{{emailValidate}}</span>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 pl-0 mt-3">
+                              <input type="password" id="password" formControlName="password" class="form-control" placeholder="Password" required>
+                              <span class="eye-hideShow"><i (click)="eyeChange($event)" class="fa fa-eye-slash"></i></span>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mt-3">
+                              <input type="text" formControlName="mobile" class="form-control" placeholder="Mobile No." required>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mt-3">
+                              <input type="text" formControlName="pincode" class="form-control" placeholder="Pincode" required>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mt-3">
+                              <input type="text" formControlName="city" class="form-control" placeholder="City" required>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mt-3">
+                              <input type="text" formControlName="state" class="form-control" placeholder="State" required>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mt-3">
+                              <input type="text" formControlName="alternatePhone" class="form-control" placeholder="Alternate mobile no." required>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
+                               <textarea formControlName="address" class="form-control" placeholder="Address"></textarea>
+                            </div>
+                            <button type="submit" class="btn mt-4">Submit</button>
+                      </div>
+                  </form>
+                </div>
+                <!-- Login Form -->
+                <div class="body-area" *ngIf="loginRegister">
+                  <p>Login to continue</p>
+                  <form class="mt-4" [formGroup]="uLogin" (ngSubmit)="userLogin(uLogin.value)">
+                    <div class="row">
+                          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 pl-0 mb-4">
+                            <input type="text" formControlName="email" class="form-control" placeholder="Email address" required>
+                          </div>
+                          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <input type="password" id="password" formControlName="password" class="form-control" placeholder="Password" required>
+                            <span class="eye-hideShow loginPassword"><i (click)="eyeChange($event)" class="fa fa-eye-slash"></i></span>
+                          </div>
+                          <button type="submit" [disabled]="!uLogin.valid" class="btn mt-4">Submit</button>
+                    </div>
+                </form>
+                <h4 class="text-right" (click)="goToForgotPassword()">Forgot Password?</h4>
+                </div>
+            </div>            
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-hidden col-sm-hidden col-hidden"></div>
+      </div>
+   </div>
+
+
+ </section>

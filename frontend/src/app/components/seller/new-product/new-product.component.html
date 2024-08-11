@@ -1,0 +1,153 @@
+<!-- Loader -->
+<div class="wraper-loader" id="wraperLoader">
+    <div class="loader"></div>
+</div>
+<!-- END Loader -->
+ 
+<section class="seller-dashboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 p-0">
+                <app-sidebar-menu></app-sidebar-menu>
+            </div>
+            <div class="col-lg-9 p-0">
+                <div class="content-dashboard">
+                    <section class="add-product-page">
+                        <div class="container p-4">
+                            <div class="row justify-content-center">
+                                <div class="col-12">
+                                    <h4 class="text-left p-2">Add New Product</h4>
+                                    <form class="sellerProduct" #sellerReg="ngForm" (ngSubmit)="add_new_product(sellerReg.value)">
+                                        <div class="row">
+                                            <div class="col-lg-8 mb-2">
+                                                <input type="text" name="name" class="form-control" placeholder="Product Name *" ngModel required>
+                                                <!-- <span class="error" *ngIf="name.touched && name.errors?.required">Name is required</span> -->
+                                            </div>
+                                            <!-- <div class="col-lg-4 mb-2">
+                                                <select name="productType" (change)="getProductType($event)" ngModel class="form-control form-select" required>
+                                                    <option disabled selected value> -- Select Product Type * -- </option>
+                                                   <option>Simple Product</option>
+                                                   <option>Variable Product</option>
+                                                </select>
+                                            </div> -->
+                                            <div class="col-lg-4">
+                                                <input type="text" name="salePrice" class="form-control" placeholder="Sale Price*" ngModel required>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <input type="text" name="regularPrice" class="form-control"
+                                                    placeholder="Regular Price *" ngModel required>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <input type="number" name="countInStock" class="form-control"
+                                                    placeholder="Stock Item" ngModel>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <input type="text" name="rating" class="form-control"
+                                                    placeholder="Rating" ngModel>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row mt-2">
+                                            <div class="col-lg-6">
+                                                <select name="category" ngModel class="form-control form-select" required>
+                                                    <option disabled selected value> -- Select Category * -- </option>
+                                                    <option *ngFor="let cat of categories" value="{{cat.catName}}">{{cat.catName}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <select name="brand" ngModel class="form-control form-select" required>
+                                                    <option disabled selected value> -- Select Brand * -- </option>
+                                                    <option *ngFor="let brnd of brands" value="{{brnd.brandName}}">{{brnd.brandName}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-lg-6">
+                                                <select name="size" ngModel class="form-control form-select">
+                                                    <option disabled selected value> -- Select Size -- </option>
+                                                    <option *ngFor="let s of sizes" value="{{s}}">{{s}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <select name="color" ngModel class="form-control form-select" required>
+                                                    <option disabled selected value> -- Select Color * -- </option>
+                                                    <option *ngFor="let c of colors" value="{{c}}">{{c}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-lg-6">
+                                                <label style="font-size:14px;" class="mt-2 pb-2">Upload product single image *</label>
+                                                <input type="file" id="uploadProduct" (change)="imagePreview($event)"
+                                                    name="image" class="form-control" ngModel required/>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                    <img id="imgPreview" [src]="imgUrl">
+                                                <span *ngIf="closeFlag" id="remove" (click)="removeImg()">X</span>
+                                            </div>
+                                        </div>
+                                        <!-- Add Variation Product -->
+                                        <!-- <hr> -->
+                                        <!-- <div class="row mt-2" *ngIf="productTypeFlag">
+                                            <h4 class="text-left pl-4">Add Color & Size 
+                                                <span (click)="addRow()" class="pull-right bg-white p-2">Add Row</span></h4>
+                                               <div class="wraper-row" *ngFor="let obj of variablForm; let i = index" style="display: flex; justify-content: space-between;                                               ">
+                                                 <div class="col-lg-4">
+                                                    <input type="file" (change)="imagesPreview($event, i)"
+                                                    name="image{{i}}" class="form-control" [(ngModel)]="obj.image" required/>
+                                                     <span *ngIf="vProductFlag">
+                                                         <img id="imgPreview" [src]="vImgUrl">
+                                                         <span id="remove" (click)="removeImgs(i)">X</span> 
+                                                    </span>   
+                                                </div> 
+                                                <div class="col-lg-4">
+                                                    <select name="size{{i}}" [(ngModel)]="obj.size" class="form-control form-select" required>
+                                                        <option disabled selected value> -- Select Size * -- </option>
+                                                        <option *ngFor="let s of sizes" value="{{s}}">{{s}}</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-4">
+                                                    <select name="color{{i}}" [(ngModel)]="obj.color" class="form-control form-select" required>
+                                                        <option disabled selected value> -- Select Color * -- </option>
+                                                        <option *ngFor="let c of colors" value="{{c}}">{{c}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        <!-- END Add Variation Product -->
+                                        <div class="row mt-4">
+                                            <div class="col-lg-6">
+                                                <textarea type="text" placeholder="Short Description"
+                                                    name="shortDescription" class="form-control" ngModel></textarea>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="row">
+                                                    <div class="col-lg-12 mb-2">
+                                                        <span style="font-size:14px;">Select featured or normal product</span>
+                                                    </div>
+                                                    <div class="col-lg-12 featured">
+                                                        <span style="font-size:12px;" class="feat">Is Featured</span><input type="checkbox" name="isFeatured" ngModel>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        <div class="row mt-4">
+                                            <div class="col-lg-12 mt-2">
+                                                <textarea type="text" placeholder="Long Description"
+                                                    name="longDescription" class="form-control" ngModel></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="submitDiv">
+                                          <button type="submit" class="btn btn-primary mt-4" [disabled]="!sellerReg.valid">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

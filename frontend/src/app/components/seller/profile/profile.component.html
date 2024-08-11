@@ -1,0 +1,52 @@
+<section class="seller-dashboard">
+     <div class="container">
+        <div class="row">
+            <div class="col-lg-3 p-0">
+               <app-sidebar-menu></app-sidebar-menu>
+            </div>
+            <div class="col-lg-9 p-0">
+                <div class="content-dashboard">
+                    <h1>Seller Profile  <button (click)="updateForm()" class="pull-right btn btn-primary">Update</button></h1>
+                    <div class="seller-data mt-4">
+                        <form [formGroup]="sellerForm" (ngSubmit)="sellerProfileForm(sellerForm.value)">
+                             <div class="row">
+                                <div class="col-lg-6 mb-4">
+                                    <label class="mb-2">Name</label>
+                                    <input type="text" formControlName="name" [(ngModel)]="name" placeholder="Name" class="form-control" required> 
+                                </div>
+                                
+                                <div class="col-lg-6">
+                                    <label class="mb-2">Email</label>
+                                    <input type="text" readonly formControlName="email" [(ngModel)]="email" placeholder="Email" class="form-control bg-gray">
+                                </div>
+
+                                <div class="col-lg-6 mb-4">
+                                    <label class="mb-2">Password</label>
+                                    <input id="password" type="password" formControlName="password" [(ngModel)]="password" placeholder="Password" class="password form-control">
+                                    <span class="eyeToggle" (click)="eyeChanges()"><i [ngClass]="eyeChange"></i></span>
+                                </div>
+
+                                <div class="col-lg-6 mb-4">
+                                    <label class="mb-2">Mobile</label>
+                                    <input type="text" formControlName="mobile" [(ngModel)]="mobile" placeholder="Mobile" class="form-control">
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label class="mb-2">Address</label>
+                                    <textarea type="text" formControlName="address" [(ngModel)]="address" class="form-control" placeholder="Address"></textarea>
+                                </div>
+
+                                <div class="col-lg-6">
+                                  <button type="submit" class="btn btn-info" id="submit" disabled>Submit</button>
+                                </div>
+
+                             </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+     </div>
+</section>

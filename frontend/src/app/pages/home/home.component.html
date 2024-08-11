@@ -1,0 +1,73 @@
+<!-- Banner Wrapper -->
+<div class="bd-example">
+  <ngb-carousel>  
+    <ng-template ngbSlide>  
+      <img src="../../../assets/ads-banner/slider1.png" alt="Banner-1">
+  </ng-template> 
+    <ng-template ngbSlide>  
+        <img src="../../../assets/banner-1.png" alt="Banner-1">
+    </ng-template>  
+    <ng-template ngbSlide>  
+        <img src="../../../assets/banner-2.png" alt="Banner-2">
+    </ng-template>  
+    <ng-template ngbSlide>  
+        <img src="../../../assets/banner-3.png" alt="Banner-3">
+    </ng-template>  
+</ngb-carousel> 
+
+</div> 
+
+
+<!------------------------------- Ads Banner ------------------------------>
+<section class="ads-products">
+  <div class="container-fluid">
+     <div class="row m-2 pb-4 pt-4 plr bg-white">
+      <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12"> 
+        <img src="../../../assets/ads-banner/ad1.png">
+      </div>
+      <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12"> 
+        <img src="../../../assets/ads-banner/ad2.png">
+      </div>
+      <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12"> 
+        <img src="../../../assets/ads-banner/ad3.png">
+      </div>
+      <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12"> 
+        <img src="../../../assets/ads-banner/ads3.png">
+      </div>
+     </div>
+  </div>
+</section>
+
+<!-- End Banner Wrapper -->
+
+<section class="Featured-products">
+<div class="container-fluid">
+    <div class="row m-2 pb-4 pt-4 plr bg-white">
+        <div class="d-flex">
+          <h1 class="mb-4">Featured Products</h1>
+         </div>
+        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 mb-4" *ngFor="let featured of featuredProducts">
+            <div class="card">
+              <span class="wishlist" id="{{featured.id}}" (click)="wishlistItem(featured.id, $event)"><i class="fa fa-heart" aria-hidden="true"></i></span>
+              <a routerLink="/shop/product-details/{{featured.id}}">
+               <img src="{{featured.image}}" class="card-img-top" alt=""> 
+                <div class="card-body">
+                  <h5 class="card-title text-secondary" title="{{featured.name}}">{{featured.name.substring(0, 20)}}...</h5>
+                  <p>${{featured.salePrice}} <span class="text-black-50"><del>${{featured.regularPrice}}</del></span>
+                    <span class="text-success"> {{featured.discount}}% off</span>
+                  </p>
+                </div>
+               </a>
+            </div>
+          </div>
+    </div>
+</div>
+</section>
+
+ 
+
+<div class="alert alert-success" id="alert-success" role="alert">
+  <div class="message">
+    <i class="fa fa-check"></i> <span id="message">Product addedd successfully in wishlist</span>
+  </div>
+</div>

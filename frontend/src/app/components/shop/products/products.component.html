@@ -1,0 +1,180 @@
+<section class="shop_wraper">
+    <div class="container-fluid px-4"> 
+        <div class="row">
+             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12 bg-white p-0">
+              <h5>Filter</h5>
+              <div class="category_filters pt-2">
+                <h4>Price</h4>
+               <div class="p-2 pb-4">
+                 <ngx-slider [(value)]="value" (userChange)="priceFilter()" [options]="options"></ngx-slider>
+                </div>
+             </div>
+
+            <!-- Category filter -->
+             <div class="category_filter pt-2">
+               <h4 (click)="categoryToggle()">Category 
+                <span class="down-arrow">
+                  <i *ngIf="!arrowIcon" class="fa fa-chevron-down"></i>
+                  <i  *ngIf="arrowIcon" class="fa fa-chevron-up"></i>
+                </span>
+              </h4>
+              <div *ngIf="!arrowIcon">
+                <ul>
+                    <li *ngFor="let cat of categoriesList | filter:searchText; let i = index">
+                      <input type="checkbox" id="{{cat.catName}}" name="{{cat.catName}}" value="{{cat.catName}}" (click)="selectCategory($event)">
+                      <label for="{{cat.catName}}">{{cat.catName}}</label><br>
+                    </li>
+                </ul>
+              </div>
+             </div>
+             
+             <!-- Brand Filter -->
+             <div class="category_filter pt-2">
+              <h4 (click)="brandToggle()">Brands 
+               <span class="down-arrow">
+                <i *ngIf="!brandIcon" class="fa fa-chevron-down"></i>
+                 <i  *ngIf="brandIcon" class="fa fa-chevron-up"></i>
+               </span>
+             </h4>
+             <div *ngIf="brandIcon">
+               <ul>
+                   <li *ngFor="let brand of allBrands; let i = index">
+                     <input type="checkbox" id="{{brand.brandName}}" name="{{brand.brandName}}" value="{{brand.brandName}}" (click)="brandFilter($event)">
+                     <label for="{{brand.brandName}}">{{brand.brandName}}</label><br>
+                   </li>
+               </ul>
+             </div>
+            </div>
+
+            <!-- Brand Filter -->
+            <div class="category_filter pt-2">
+              <h4 (click)="sizeToggle()">Size 
+               <span class="down-arrow">
+                <i *ngIf="!sizeFlag" class="fa fa-chevron-down"></i>
+                 <i  *ngIf="sizeFlag" class="fa fa-chevron-up"></i>
+               </span>
+             </h4>
+             <div *ngIf="sizeFlag">
+               <ul>
+                   <li *ngFor="let size of allSize; let i = index">
+                     <input type="checkbox" id="{{size}}" name="{{size}}" value="{{size}}" (click)="sizeFilter($event)">
+                     <label for="{{size}}">{{size}}</label><br>
+                   </li>
+               </ul>
+             </div>
+            </div>
+
+            </div>
+             <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12">
+             <div class="bg-white p-2 pt-4">
+              <div class="sort-by">
+                 <ul>
+                  <li><strong>Sort By</strong></li>
+                  <li id="popularity" (click)="popularity()"><a [ngClass]="popular=='popularity'?'active':''" class="sort-list {{default}}">Popular</a></li>
+                  <li id="lowHight" (click)="lowHight()"><a [ngClass]="lowHigh=='lowHight'?'active':''" class="sort-list">Price -- Low to High</a></li>
+                  <li id="hightLow" (click)="hightLow()"><a [ngClass]="hightLw=='hightLo'?'active':''" class="sort-list">Price -- High to Low</a></li>
+                  <li id="trend" (click)="newTrend()"><a [ngClass]="trend=='newTrends'?'active':''" class="sort-list">New Trends</a></li>
+                 </ul>
+              </div>
+            
+              <!-- Search Product Display Card -->
+              <div class="product-wraper search-product" id="searchProduct">
+                <div class="row">
+                  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12" *ngFor="let sItem of resultData | paginate:{ itemsPerPage: 28, currentPage: p }; let i = index;">
+                    <div class="product-grid">
+                      <span class="wishlist" id="{{sItem.id}}" (click)="wishlistItem(sItem.id)"><i class="fa fa-heart" aria-hidden="true"></i></span>
+                       <a routerLink="/shop/product-details/{{sItem.id}}">
+                          <img src="{{sItem.image}}">
+                         <div class="product-details">
+                          <h5 title="{{sItem.name}}">{{sItem.name.substring(0, 20)}}...</h5>
+                          <p>${{sItem.salePrice}} <s> ${{sItem.regularPrice}}</s>
+                             <span class="text-sucess">{{sItem.discount}}% off</span></p>
+                         </div>
+                       </a>
+                      </div>
+                  </div>
+                </div>
+                <div class="row" *ngIf="this.cloneProduct == null">
+                  <div class="col-lg-12 text-center">
+                    <p><strong>Product Not Found! </strong></p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- END Search Product Display Card -->
+              <div class="product-wraper" id="product-listing">
+                  <!-- Display All Products -->
+                   <div class="row" *ngIf="!flag">
+                      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12" *ngFor="let item of wholeProducts | paginate:{ itemsPerPage: 28, currentPage: p }; let i = index">
+                        <div class="product-grid">
+                          <span class="wishlist" id="{{item.id}}" (click)="wishlistItem(item.id)"><i class="fa fa-heart" aria-hidden="true"></i></span>
+                           <a routerLink="/shop/product-details/{{item.id}}">
+                              <img src="{{item.image}}">
+                             <div class="product-details">
+                              <h5 title="{{item.name}}">{{item.name.substring(0, 20)}}...</h5>
+                              <p>${{item.salePrice}} <s> ${{item.regularPrice}}</s>
+                                 <span class="text-sucess">{{item.discount}}% off</span>
+                              </p>
+                             </div>
+                           </a>
+                          </div>
+                      </div>
+                   </div>
+                   <div class="row text-center" *ngIf="wholeProducts.length == 0"> 
+                     <div class="col-lg-12 text-center">
+                       <p><strong>Product Not Found! </strong></p>
+                     </div>
+                   </div>
+
+                   <!-- Display Filtred Products -->
+                   <div class="row-wraper">
+                   <div class="row" *ngIf="flag">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12" *ngFor="let temp of cloneProduct | paginate:{ itemsPerPage: 28, currentPage: p }; let i = index">
+                      <div class="product-grid">
+                        <span class="wishlist" id="{{temp.id}}" (click)="wishlistItem(temp.id)"><i class="fa fa-heart" aria-hidden="true"></i></span>
+                         <a routerLink="">
+                          <img src="{{temp.image}}">
+                           <div class="product-details">
+                            <h5 title="{{temp.name}}">{{temp.name.substring(0, 20)}}...</h5>
+                            <p>${{temp.salePrice}} <s> ${{temp.regularPrice}}</s>
+                               <span class="text-sucess">{{temp.discount}}% off</span></p>
+                           </div>
+                         </a>
+                        </div>
+                    </div>
+                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" *ngIf="cloneProduct.length == 0">
+                           <div class="text-center mt-4"><h5>Product Not Found</h5></div>
+                      </div>
+                 </div>
+                </div>
+ 
+              </div>
+              
+            </div>
+
+              <!------------------------------- Pagination ----------------------------->
+              <div class="pagination-wraper">
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+            <!------------------------------- END Pagination ----------------------------->
+            
+            </div>
+        </div>
+      </div>
+</section>
+
+
+<!-- Popup Notification -->
+<div class="alert alert-success" id="alertSuccess" role="alert">
+  <div class="message">
+    <i class="fa fa-check"></i> <span id="message">Product addedd successfully in wishlist</span>
+  </div>
+</div>
+
+
+
+
+
+
+
+

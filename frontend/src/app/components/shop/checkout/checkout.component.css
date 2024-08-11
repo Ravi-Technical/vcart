@@ -1,0 +1,318 @@
+
+/******** Start Loader CSS *********/
+#wraperLoader {
+    display: none;
+}
+
+.wraper-loader {
+    position: fixed;
+    width: 100%;
+    background: #000;
+    opacity: 0.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    z-index: 9;
+}
+
+  /* HTML: <div class="loader"></div> */
+.loader {
+    position: relative;
+    top: 40%;
+  width: 40px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(farthest-side,#ED303C 94%,#0000),
+    radial-gradient(farthest-side,#3B8183 94%,#0000),
+    radial-gradient(farthest-side,#FAD089 94%,#0000),
+    radial-gradient(farthest-side,#FF9C5B 94%,#0000),
+    #ED303C;
+  background-size: 105% 105%;
+  background-repeat: no-repeat;
+  animation: l5 2s infinite; 
+    margin: 0 auto;
+
+}
+@keyframes l5 {
+  0%  {background-position: 50% -50px,-40px 50%, 50% calc(100% + 50px),calc(100% + 50px) 50%}
+  20%,
+  25% {background-position: 50% -50px,-50px 50%, 50% calc(100% + 50px),50% 50%}
+  45%,
+  50% {background-position: 50% -50px,-50px 50%, 50% 50%              ,50% 50%}
+  75%,
+  75% {background-position: 50% -50px, 50%  50%, 50% 50%              ,50% 50%}
+}
+
+/******** END Loader CSS *********/
+
+
+.hideButton {display: none;}
+
+
+section.viewcart-wraper {
+    padding: 20px 0;
+    background: #f3f3f3;
+}
+
+.item-wraper {
+    display: flex;padding: 1rem;
+    justify-content: left;border-bottom: 1px solid #dddddd59;
+}
+
+.bg-white.cart-wraper .btn {
+    width: 200px;
+    margin: 0 auto;
+    border-radius: 2px;
+    background-color: #6c58ef;
+    border: none;
+}
+
+.item-wraper:nth-last-child(1) { border-bottom: none;}
+
+span.discount {
+    color: #36b76f;
+    font-size: 14px;
+}
+.p-details s {
+    color: #c5c1c1;
+    font-size: 14px;
+}
+
+
+.p-image img {
+    width: 110px;
+    height: 110px;
+    border: 1px solid #ddd;
+}
+
+.p-details {
+    padding: 0 10px;width: 46%;
+}
+
+.p-details h4 {
+    margin: 0;
+    font-size: 13px;
+    color: #555;
+    line-height: 21px;
+}
+.p-details p {
+    font-size: 12px;
+    color: #999;
+}
+.place-order .btn {
+    background: #fb8b3b;
+    color: #fff;
+    border: none;
+    border-radius: 2px;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px 30px;
+}
+
+.place-order {
+    display: flex;
+    justify-content: end;
+    background: #fff;
+    padding: 1rem;
+    position: sticky;
+    box-shadow:0px 2px 27px #ddddddb0;
+}
+
+.bg-white {
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 70vh;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.saveForLater {display: flex;align-items: center;}
+
+button.minus {
+    height: 30px;
+    width: 30px;
+    border: 1px solid #ddd;
+    background: transparent;
+    border-radius: 50%;
+    font-weight: 500;
+    font-size: 18px;
+}
+.saveForLater h6 {
+    font-size: 15px;
+    margin: 0 0px 0 10px;
+    color: #1496bb;
+    cursor: pointer;
+}
+
+input.number {
+    width: 60px;
+    height: 30px;
+    border: 1px solid #ddd;
+    margin: 0 10px;
+    text-align: center;
+}
+
+input.number:focus {
+    outline: #fff;
+}
+ul.list-of-item li {
+    list-style: none;
+    padding: 0;font-size: 14px;
+    color: #555;margin-bottom: 1rem;
+}
+span.pull-right.bg-green {
+    color: #36b76f;
+}
+
+h4.border-1 {
+    border-top: 1px dotted #ddd;
+    border-bottom: 1px dotted #ddd !important;
+}
+
+ul.list-of-item {
+    margin: 0;
+    padding: 0.5rem 1rem 0 1rem;
+}
+.price-details h4 {
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+    padding: 1rem;
+}
+
+.cart-wraper {text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.bg-white.cart-wraper h2 {
+    font-size: 3rem;
+}
+.bg-white.cart-wraper span {
+    color: #6c58ef;
+}
+
+.mb-4.loginSignUp {
+    background-color: #fff;
+}
+.mb-4.loginSignUp h4 {
+    font-size: 1rem;
+    background-color: #6c58ef;
+    padding: 10px;
+    color: #fff;
+}
+
+.inner-info {
+    padding: 0.5rem 0 1.5rem 2rem;
+}
+
+.inner-info h5 {
+    font-size: 14px;
+}
+.inner-info .btn {
+    padding: 7px 2rem;font-size: 14px;
+    border-radius: 2px;
+}
+
+ul.listOfPoints li {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.8rem;
+    color: #434141;
+}
+
+ul.listOfPoints {
+    margin: 0;
+    padding: 0;
+}
+.mb-4.loginSignUp p {
+    font-size: 14px;
+}
+
+.loginSuccess p {
+    margin: 0 0 0.5rem 0;
+}
+
+.loginSuccess {
+    padding: 7px 1rem;
+}
+
+a.btn:hover {
+    background-color: #fb8b3b !important;
+    color: #fff;
+}
+
+.loginok a.btn {
+    font-size: 14px;
+    float: right;
+    border: none;
+    transform: translate(-2rem, -3.3rem);
+    padding: 0.5rem 2rem;
+    border-radius: 2px;
+    color: #fff;
+    background-color: #9c8ff2
+}
+.mb-4.loginSignUp span {
+    background-color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    color: #43c87c;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 29px;
+}
+
+.loginSuccess label {
+    font-size: 13px;
+    color: #555;
+}
+
+.loginSuccess input , .loginSuccess textarea{
+    font-size: 13px;
+}
+.paymentOption h4 {
+    background: #6c58ef;
+    color: #fff;
+    font-size: 1rem;
+    padding: 0.8rem;
+    margin: 0;
+}
+.paymentOption {
+    background-color: #fff;
+    padding: 1rem 0 2rem 0;
+}
+
+.paypal-button-container {min-width: 100px !important;
+    max-width: 274px !important; width: 30%;}
+
+.buttons-container {
+    width: 0% !important;
+}
+
+.inner-payment label {
+    padding: 0 0 1rem 1rem;
+    text-align: left;
+}
+.inner-payment {
+    padding: 1rem 0 0 1rem;
+}
+
+input[type=radio] {
+    width: 2%;
+    height: 1.2em;
+}
+
+button.btn.btn-info {
+    border-radius: 2px;
+    padding: 10px 35px;
+    font-weight: 500;
+}
+ 
+

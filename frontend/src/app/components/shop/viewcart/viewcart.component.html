@@ -1,0 +1,97 @@
+<section class="viewcart-wraper">
+    <div class="container-fluid">
+        <div class="row" *ngIf="localProduct.length !==0">
+            <div class="col-lg-8">
+             <div class="bg-white">
+                <div class="item-wraper" *ngFor="let item of localProduct; let i=index">
+                   <div class="p-image">
+                    <img src="{{item.image}}" />
+                   </div>
+                   <div class="p-details">
+                    <h4>{{item.name}}</h4>
+                    <p>Size : {{item.size}}, {{item.color}}</p>
+                    <h6>${{item.salePrice}} <s>${{item.regularPrice}}</s><span class="discount"> {{item.discount}}% off</span></h6>
+                   </div>
+                   <div class="saveForLater">
+                      <button (click)="decrease(i)" class="minus">-</button>
+                           <input type="text" class="number" name="productCount{{i}}" value="{{item.quantity}}" />
+                      <button (click)="increase(i)" class="minus">+</button>
+                      <button (click)="saveForLaterMethod(item.id)" class="saveForLater">&nbsp; &nbsp; Save For Later</button>
+                      <h6 (click)="removeItem(i)">| &nbsp;Remove</h6>
+                   </div>
+                </div>
+            </div>
+            <div class="place-order">
+                <button (click)="goToCheckout()" class="btn btn-info">Place Order</button>
+            </div>
+            <!-- Save for later -->
+               <div class="bg-white mt-4 save-for-later" *ngIf="genericSaveForLater">
+                 <h3>Save for later ({{genericSaveForLater.length}})</h3>
+                 <div class="item-wraper" *ngFor="let sfl of genericSaveForLater; let i=index">
+                    <div class="p-image">
+                     <img src="{{sfl.image}}" />
+                    </div>
+                    <div class="p-details">
+                     <h4>{{sfl.name}}</h4>
+                     <p>Size : {{sfl.size}}, {{sfl.color}}</p>
+                     <h6>${{sfl.salePrice}} <s>${{sfl.regularPrice}}</s><span class="discount"> {{sfl.discount}}% off</span></h6>
+                    </div>
+                    <div class="saveForLater">
+                        <button (click)="moveToCart(sfl.id)" class="saveForLater">Move to cart</button>
+                        <button (click)="removeSfl(sfl.id)"  class="saveForLater">| &nbsp;Remove</button>
+                     </div>
+                 </div>
+                </div>
+
+            <!-- // Saver for later end -->
+            </div>
+            <div class="col-lg-4">
+                <div class="price-details bg-white">
+                    <h4>Price Details</h4>
+                    <ul class="list-of-item">
+                        <li>
+                            Price ({{localProduct.length}} items) <span class="pull-right"> ${{totalPrice.toFixed(2)}} </span>
+                        </li>
+                        <li>Discount <span class="pull-right bg-green"> - ${{totalDiscount}}</span></li>
+                        <li>Delivery Charges <span class="pull-right"> Free </span> </li>
+                    </ul>
+                    <h4 class="border-1">Total Amount <span class="pull-right">${{totalPrice}}</span></h4>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="localProduct.length==0">
+            <div class="col-xl-12 col-lg-12">
+                <div class="bg-white cart-wraper">
+                    <h2>
+                        Your cart is <span>empty!</span>
+                    </h2>
+                    <p>Add to product for the shopping</p>
+                    <button class="btn btn-primary" (click)="goToShop()">Shop now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Popup Notification -->
+    <div class="alert alert-success" id="alertSuccess" role="alert">
+        <div class="message">
+        <i class="fa fa-check"></i> <span id="message"> Product has been removed successfully</span>
+        </div>
+    </div>
+
+
+  <!-- Popup Notification -->
+    <div class="alert alert-success save-notification" id="alertSuccess1" role="alert">
+        <div class="message">
+        <i class="fa fa-check"></i> <span id="message"> Product has been added successfully</span>
+        </div>
+    </div>
+
+    <!-- Popup Notification -->
+    <div class="alert alert-success moveToCarts" id="alertSuccess1" role="alert">
+        <div class="message">
+        <i class="fa fa-check"></i> <span id="message"> Product successfully move in cart</span>
+        </div>
+    </div>

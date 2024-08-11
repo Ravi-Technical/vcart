@@ -1,0 +1,67 @@
+section.seller-dashboard {
+    padding: 50px; font-family: "Poppins", sans-serif;
+    background: #ddddddbd;
+}
+.content-dashboard {
+    background-color: #fff;
+    height: 100vh;
+    border-radius: 0px 10px 10px 0px;
+    padding: 30px;
+}
+
+.seller-data li {
+    list-style: none;
+    margin: 0;
+    padding: 10px 20px;
+    background: #ededed;
+    margin-bottom: 1rem;
+    font-size: 14px;
+}
+.seller-data ul {
+    margin: 0;
+    padding: 0;
+}
+
+label.mb-2 {
+    font-size: 14px;
+    font-weight: 500;
+}
+textarea.form-control, input.form-control {
+    font-size: 13px;
+    border-radius: 2px;
+}
+
+textarea.form-control:focus, input.form-control:focus {
+  box-shadow: none;
+}
+
+button.btn {
+    border-radius: 2px;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 0.5rem 2rem;
+    cursor: pointer;
+}
+
+button.btn.btn-info {
+    width: 30%;
+    text-align: center;
+    margin: auto;
+    display: block;
+    position: relative;
+    top: 2rem;
+}
+
+input#password {
+    padding: 6px 3rem 6px 0.7rem;
+}
+
+span.eyeToggle {
+    position: absolute;
+    transform: translate(26rem, -1.8rem);
+}
+
+input.form-control.bg-gray {
+    background-color: lightgray;
+}
+ 

@@ -1,0 +1,102 @@
+<section class="seller-dashboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 p-0">
+                <app-sidebar-menu></app-sidebar-menu>
+            </div>
+            <div class="col-lg-9 p-0">
+                <div class="content-dashboard">
+                    <section class="add-product-page">
+                        <div class="container p-4">
+                            <div class="row justify-content-center">
+                                <div class="col-12" *ngIf="wholeProducts.length==0">
+                                    <h4 class="text-left p-2">List of products</h4>
+                                    <h3 class="text-center">Product Not Available</h3>
+                                </div>
+                                <div class="col-12" *ngIf="wholeProducts.length !=0">
+                                    <h4 class="text-left p-2">List of products</h4>
+                                    <p><b> Total {{wholeProducts.length}} Products </b></p>
+                                    <div class="table-responsive">
+                                        <table class="border table table-striped table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">#.</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">S.Desc...</th>
+                                                    <th scope="col">L.Desc...</th>
+                                                    <th scope="col">S.Price...</th>
+                                                    <th scope="col">Reg.Price...</th>
+                                                    <th scope="col">Brand</th>
+                                                    <th scope="col">DateTime</th>
+                                                    <th scope="col">Size</th>
+                                                    <th scope="col">Color</th>
+                                                    <th scope="col">Category</th>
+                                                    <th scope="col">Rating</th>
+                                                    <th scope="col">Featured</th>
+                                                    <th scope="col">Discount</th>
+                                                    <th scope="col">Stocks</th>
+                                                    <th scope="col">Quantity</th>
+                                                    <th scope="col">Image</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let product of wholeProducts | paginate:{ itemsPerPage: 10, currentPage: p }; 
+                                                 let i = index">
+                                                    <td>{{ (p - 1) * 10 + i + 1 }}.</td>
+                                                    <td>
+                                                        <div class="wrapper">
+                                                            {{product.name.substr(0, 6)}}...
+                                                            <div class="tooltip"> {{product.name}}</div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="wrapper">
+                                                            {{product.shortDescription.substr(0, 10)}}...
+                                                            <div class="tooltip"> {{product.shortDescription}}</div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="wrapper">
+                                                            {{product.longDescription.substr(0, 10)}}...
+                                                            <div class="tooltip"> {{product.longDescription}}</div>
+                                                        </div>
+                                                    </td>
+                                                    <td>{{product.salePrice}}</td>
+                                                    <td>{{product.regularPrice}}</td>
+                                                    <td>{{product.brand}}</td>
+                                                    <td>{{product.dateCreated | date :'short'}}</td>
+                                                    <td>{{product.size}}</td>
+                                                    <td>{{product.color}}</td>
+                                                    <td>{{product.category}}</td>
+                                                    <td>{{product.rating}}</td>
+                                                    <td>{{product.isFeatured}}</td>
+                                                    <td>{{product.discount}}% </td>
+                                                    <td>{{product.countInStock}}</td>
+                                                    <td>{{product.quantity}}</td>
+                                                    <td>
+                                                        <img src="{{product.image}}" alt="product image">
+                                                    </td>
+                                                    <td>
+                                                        <a routerLink="/seller/update-product/{{product.id}}"
+                                                            class="btn btn-info">Update</a>
+                                                        <a (click)="deleteOneProduct(product.id)"
+                                                            class="btn btn-danger">Delete</a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="mt-4" style="display: flex;align-items: end; justify-content: end;">
+                                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

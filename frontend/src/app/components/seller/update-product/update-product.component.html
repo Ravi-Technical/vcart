@@ -1,0 +1,115 @@
+<!--------------------------------------------- Product Update ------------------------------------------------>
+<section class="seller-dashboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 p-0">
+                <app-sidebar-menu></app-sidebar-menu>
+            </div>
+            <div class="col-lg-9 p-0">
+                <div class="content-dashboard">
+                    <section class="add-product-page">
+                        <div class="container p-4">
+                            <div class="row justify-content-center">
+                                <div class="col-12">
+                                    <h4 class="text-left p-2">Product Update</h4>
+                                    <form #updateProd="ngForm" (ngSubmit)="UpdateProd(updateProd.value)">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <input type="text" name="name" class="form-control"
+                                                    placeholder="Product Name" [(ngModel)]="productModel.name">
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <input type="text" name="salePrice" class="form-control"
+                                                    placeholder="Sale Price" [(ngModel)]="productModel.salePrice">
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <input type="text" name="regularPrice" class="form-control"
+                                                    placeholder="Regular Price" [(ngModel)]="productModel.regularPrice">
+                                            </div>
+                                        </div>
+                                        <div class="row mt-2">
+                                            <div class="col-lg-4">
+                                                <input type="text" name="countInStock" class="form-control"
+                                                    placeholder="Stock Item" [(ngModel)]="productModel.countInStock">
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <select name="size" [(ngModel)]="productModel.size"
+                                                    class="form-control form-select">
+                                                    <option disabled selected value> -- Select Size -- </option>
+                                                    <option *ngFor="let s of sizes" value="{{s}}">{{s}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <select name="color" [(ngModel)]="productModel.color"
+                                                    class="form-control form-select">
+                                                    <option disabled selected value> -- Select Color -- </option>
+                                                    <option *ngFor="let c of colors" value="{{c}}">{{c}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row mt-2">
+                                            <div class="col-lg-4">
+                                                <input type="text" name="rating" class="form-control"
+                                                    placeholder="Rating" [(ngModel)]="productModel.rating">
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <select name="category" [(ngModel)]="productModel.category" class="form-control form-select">
+                                                    <option disabled selected value> -- Select Category -- </option>
+                                                    <option *ngFor="let cat of categories" value="{{cat.catName}}">{{cat.catName}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <select name="brand" [(ngModel)]="productModel.brand" class="form-control form-select">
+                                                    <option disabled selected value> -- Select Brand -- </option>
+                                                    <option *ngFor="let brnd of brands" value="{{brnd.brandName}}">{{brnd.brandName}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mt-4">
+                                            <div class="col-lg-6">
+                                                <label class="mt-2 pb-2">Upload product single image</label>
+                                                <input type="file" id="uploadProduct" (change)="imagePreview($event)"
+                                                    name="image" class="form-control" ngModel />
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <img id="imgPreview" [src]="imgUrl">
+                                                <span *ngIf="closeFlag" id="remove" (click)="removeImg()">X</span>
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-lg-6">
+                                                <textarea type="text" placeholder="Short Description"
+                                                    name="shortDescription" class="form-control" [(ngModel)]="productModel.shortDescription"></textarea>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="row">
+                                                    <div class="col-lg-12 mb-2">
+                                                        <span>Select featured or normal product</span>
+                                                    </div>
+                                                    <div class="col-lg-12 featured">
+                                                        <span class="feat">Is Featured</span><input type="checkbox" name="isFeatured" [(ngModel)]="productModel.isFeatured" checked>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        <div class="row mt-4">
+                                            <div class="col-lg-12 mt-2">
+                                                <textarea type="text" placeholder="Long Description"
+                                                    name="longDescription" class="form-control"
+                                                    [(ngModel)]="productModel.longDescription"></textarea>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

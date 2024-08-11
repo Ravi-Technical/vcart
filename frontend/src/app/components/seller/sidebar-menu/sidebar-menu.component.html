@@ -1,0 +1,53 @@
+<div class="sidebar-dashboard">
+  <div class="profile-pic">
+    <img src="../../../../assets/Sample_User_Icon.png" />
+    <h6>{{sellerName}}</h6>
+  </div>
+  <div class="links mt-4">
+    <ul>
+      <li>
+        <a routerLink="/seller/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+          ><i class="fa fa-solid fa-server"></i> &nbsp;
+          Dashboard</a
+        >
+      </li>
+      <li>
+        <a routerLink="/seller/profile" routerLinkActive="active"
+          ><i class="fa fa-solid fa-user"></i> &nbsp;
+          Profile</a
+        >
+      </li>
+      <li>
+        <a routerLink="/seller/new-product" routerLinkActive="active"
+          ><i class="fa fa-solid fa-plus"></i> &nbsp;
+          Add New Product</a
+        >
+      </li>
+      <li>
+        <a routerLink="/seller/product-list" routerLinkActive="active"
+          ><i class="fa fa-solid fa-bars"></i> &nbsp;
+          All Products</a
+        >
+      </li>
+      <li>
+        <a routerLink="/seller/brand" routerLinkActive="active"
+          ><i class="fa fa-regular fa-copyright"></i> &nbsp;
+          Brands</a
+        >
+      </li>
+      <li>
+        <a routerLink="/seller/category" routerLinkActive="active"
+          ><i class="fa fa-solid fa-list"></i> &nbsp;
+          Categories</a
+        >
+      </li>
+      <li>
+        <a routerLinkActive="active" (click)="logOut()"
+          ><i class="fa fa-solid fa-lock"></i> &nbsp;
+         Logout</a
+        >
+      </li>
+    </ul>
+    <router-outlet></router-outlet>
+  </div>
+</div>

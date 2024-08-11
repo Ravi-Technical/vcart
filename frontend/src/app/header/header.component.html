@@ -1,0 +1,91 @@
+<!-- Logged In Seller   -->
+<nav class="navbar sticky-top navbar-expand-lg navbar-light" *ngIf="sellerLoginFlag">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-lg-6">
+              <a class="navbar-brand" routerLink="/">
+                <img src="../../assets/logo.png">
+              </a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                  aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+          </div>
+          <div class="col-lg-6">
+            <div class="login-area">
+              <ul>
+                <li><a class="nav-link"  routerLinkActive="active" routerLink="/">Privacy Policy</a></li>
+                <li><a class="nav-link"  routerLinkActive="active" routerLink="/">Contact us</a></li>
+                <li><a routerLink="/seller/dashboard"><i class="fa fa-user"></i> {{sellerName}}  </a></li>
+                
+              </ul>
+            </div>
+          </div>
+      </div>
+  </div>
+</nav>
+
+<!--  Default Navigation  -->
+<nav class="navbar sticky-top navbar-expand-lg navbar-light" *ngIf="!sellerLoginFlag">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-lg-3 col-6">
+             <button class="navbar-toggler" (click)="toggle($event)" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                  aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <a class="navbar-brand" routerLink="/">
+                 <img src="../../assets/logo.png">
+              </a>
+              
+          </div>
+          <div class="col-lg-3 col-12">
+             <div class="search-bar">
+              
+                <input type="text" #search placeholder="Search for Products, Brands..." class="form-control">
+                <span (click)="searchProducts(search.value)" class="search-icon"><i class="fa fa-search"></i></span>
+                
+             </div>
+          </div>
+          <div class="col-lg-3 col-12">
+              <div class="collapse navbar-collapse" id="navbarText">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link"  routerLinkActive="active" routerLink="/seller/login">Become a seller</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link"  routerLinkActive="active" routerLink="/shop/products">Shopping</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link"  routerLinkActive="active" routerLink="/">Contact us</a>
+                    </li>
+                  </ul>
+                </div>
+          </div>
+          <div class="col-lg-3 col-6">
+            <div class="login-area">
+              <ul>
+                <li>
+                    <a routerLink="/user/login" *ngIf="!userLoginFlag"><i class="fa fa-user"></i> login</a>
+                    <a routerLink="/user/dashboard" *ngIf="userLoginFlag"><i class="fa fa-user"></i> {{userName}}</a>
+                </li>
+                <li><a routerLink="/shop/viewcart"><span *ngIf="cartItems > 0" class="cart-item">{{cartItems}}</span>
+                   <i class="fa fa-cart-arrow-down"></i> </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+      </div>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+

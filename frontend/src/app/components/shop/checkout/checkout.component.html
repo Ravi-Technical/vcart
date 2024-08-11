@@ -1,0 +1,137 @@
+<!-- Loader -->
+<div class="wraper-loader" id="wraperLoader">
+    <div class="loader"></div>
+</div>
+<!-- END Loader -->
+
+<section class="viewcart-wraper">
+    <div class="container-fluid">
+        <div class="row" *ngIf="checkOutProduct !== null">
+            <div class="col-lg-8">
+                <form #orderForm="ngForm" (ngSubmit)="orderPlace(orderForm.value)">
+                    <!-- Login panel -->
+                    <div class="mb-4 loginSignUp" *ngIf="showLoggedDiv">
+                        <h4>Login <span> &check;</span></h4>
+                        <div class="loginok">
+                            <a routerLink="/user/profile" class="btn">Change</a>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="loginSuccess">
+                                    <label>Name</label>
+                                    <input type="text" readonly="readonly" name="name" [(ngModel)]="name"
+                                        class="form-control mb-4">
+                                    <label>Email</label>
+                                    <input type="text" readonly="readonly" name="email" [(ngModel)]="email"
+                                        class="form-control mb-4">
+                                    <label>Mobile</label>
+                                    <input type="text" readonly="readonly" name="phone" [(ngModel)]="phone"
+                                        class="form-control mb-4">
+
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="loginSuccess">
+                                    <label>City</label>
+                                    <input type="text" readonly="readonly" name="city" [(ngModel)]="city"
+                                        class="form-control mb-4">
+                                    <label>State</label>
+                                    <input type="text" readonly="readonly" name="state" [(ngModel)]="state"
+                                        class="form-control mb-4">
+                                    <label>pincode</label>
+                                    <input type="text" readonly="readonly" name="pincode" [(ngModel)]="pincode"
+                                        class="form-control mb-4">
+
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="loginSuccess">
+                                    <label>Aternate Mobile No.</label>
+                                    <input type="text" readonly="readonly" name="alternatePhone"
+                                        [(ngModel)]="alternatePhone" class="form-control mb-4">
+                                    <label>Address</label>
+                                    <textarea class="form-control mb-4" name="address" [(ngModel)]="address"
+                                        readonly="readonly">
+                                    </textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4 loginSignUp" *ngIf="isLoggedIn">
+                        <h4>Login/SignUp</h4>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="inner-info">
+                                    <h5>Safe and Secure Login/SignUp</h5>
+                                    <a routerLink="/user/login" class="btn btn-primary">Login</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <ul class="listOfPoints">
+                                    <li>Get Relevant Alerts and Recommendation</li>
+                                    <li>Wishlist, Reviews, Ratings and more.</li>
+                                    <li>Easily Track Orders, Hassle free Returns</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- // End Login panel -->
+
+                    <div class="bg-white">
+                        <div class="item-wraper" *ngFor="let item of checkOutProduct; let i=index">
+                            <div class="p-image">
+                                <img src="{{item.image}}" />
+                            </div>
+                            <div class="p-details">
+                                <h4>{{item.name}}</h4>
+                                <p>Size : {{item.size}}, {{item.color}}</p>
+                                <h6>${{item.salePrice}} <s>${{item.regularPrice}}</s><span class="discount">
+                                        {{item.discount}}% off</span></h6>
+                            </div>
+                            <div class="saveForLater">
+                                <button type="button" (click)="decrease(i)" class="minus">-</button>
+                                <input type="text" class="number" name="productCount{{i}}" value="{{item.quantity}}" />
+                                <button type="button" (click)="increase(i)" class="minus">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Payment Mode -->
+                    <div class="paymentOption">
+                        <h4>Payment Mode</h4>
+                        <div class="inner-payment" *ngIf="!isLoggedIn">
+                            <input type="radio" id="cod" name="paymentMode" value="cod" ngModel="cod" checked="checked" />
+                            <label for="cod">Cash On Delivery</label><br />
+
+                            <input type="radio" id="online" name="paymentMode" value="online" ngModel="online">
+                            <label for="online" ><button type="button" (click)="payNow(orderForm.value)" #onlinePayment
+                                    class="btn btn-info" disabled>Pay Online</button></label><br> 
+                        </div>
+                        <div class="inner-payment" *ngIf="isLoggedIn">
+                          <p>Eable to payment method</p>
+                          <a routerLink="/user/login" class="btn btn-primary">Login</a>
+                        </div>
+                    </div>
+                    <!-- Order Place Button -->
+                    <div class="place-order">
+                        <button  [disabled]="orderForm.invalid" #placeOrder class="btn btn-info hideButton" type="submit">Place Order</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Price Details  -->
+            <div class="col-lg-4">
+                <div class="price-details bg-white">
+                    <h4>Price Details</h4>
+                    <ul class="list-of-item">
+                        <li>
+                            Price ({{checkOutProduct.length}} items) <span class="pull-right"> ${{totalPrice}} </span>
+                        </li>
+                        <li>Discount <span class="pull-right bg-green"> - ${{totalDiscount}}</span></li>
+                        <li>Delivery Charges <span class="pull-right"> Free </span> </li>
+                    </ul>
+                    <h4 class="border-1">Total Amount <span class="pull-right">${{totalPrice}}</span></h4>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,37 @@
+section.order-warper {
+    background-color: #ddd;
+    padding:0;height: 84vh;align-items: center;
+    text-align: center;display: flex;
+}
+
+
+.inner-order {
+    width: 50%;
+    background-color: #fff;
+    padding: 30px;
+    margin: auto;
+    border-radius: 2px;
+}
+
+.inner-order span {
+    border: 1px solid green;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    margin: 0 auto 1rem;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: green;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.inner-order .btn {
+    border-radius: 2px;
+    padding: 10px 2rem;
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+

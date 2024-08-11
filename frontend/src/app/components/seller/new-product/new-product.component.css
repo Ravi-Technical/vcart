@@ -1,0 +1,191 @@
+
+/******** Start Loader CSS *********/
+#wraperLoader {
+    display: none;
+}
+
+.wraper-loader {
+    position: fixed;
+    width: 100%;
+    background: #000;
+    opacity: 0.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    z-index: 9;
+}
+
+  /* HTML: <div class="loader"></div> */
+.loader {
+  position: relative;
+  top: 38%;
+  width: 40px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(farthest-side,#ED303C 94%,#0000),
+    radial-gradient(farthest-side,#3B8183 94%,#0000),
+    radial-gradient(farthest-side,#FAD089 94%,#0000),
+    radial-gradient(farthest-side,#FF9C5B 94%,#0000),
+    #ED303C;
+  background-size: 105% 105%;
+  background-repeat: no-repeat;
+  animation: l5 2s infinite; 
+    margin: 0 auto;
+
+}
+@keyframes l5 {
+  0%  {background-position: 50% -50px,-40px 50%, 50% calc(100% + 50px),calc(100% + 50px) 50%}
+  20%,
+  25% {background-position: 50% -50px,-50px 50%, 50% calc(100% + 50px),50% 50%}
+  45%,
+  50% {background-position: 50% -50px,-50px 50%, 50% 50%              ,50% 50%}
+  75%,
+  75% {background-position: 50% -50px, 50%  50%, 50% 50%              ,50% 50%}
+}
+
+/******** END Loader CSS *********/
+
+
+
+section.seller-dashboard {
+    padding: 50px; font-family: "Poppins", sans-serif;
+    background: #ddddddbd;
+}
+.content-dashboard {
+    background-color: #fff;
+    height: 100vh;
+    border-radius: 0px 10px 10px 0px;
+    padding: 15px 0 0 0;
+}
+
+section.add-product-page h4 {
+    font-size: 14px;background-color: #c5e1f1;
+    margin-bottom: 1rem;
+}
+
+
+
+.btn {
+    margin: auto;font-size:14px;
+    display: block;cursor: pointer;
+    border-radius: 2px;
+    text-transform: uppercase;
+    padding: 6px 30px;
+    font-weight: 500;
+}
+
+.add-product-page input, .add-product-page textarea, .add-product-page select {padding:10px; font-size:13px;border-radius:2px;color:#444;}
+
+select::-webkit-scrollbar {
+    width: 5px;
+}
+
+select::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 2px;
+}
+
+select::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+section.add-product-page img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin: auto;
+    display: block;
+    border: 1px solid #ddd;
+}
+
+span#remove {
+    background: #ddd;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: block;
+    text-align: center;
+    line-height: 19px;
+    cursor: pointer;
+    color: #111;
+    font-weight: 700;
+    border: none;
+    font-size: 11px;
+    position: sticky;
+    transform: translate(16rem, -7rem);
+}
+
+.remove {
+    background: #ddd;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: block;
+    text-align: center;
+    line-height: 19px;
+    cursor: pointer;
+    color: #111;
+    font-weight: 700;
+    border: none;
+    font-size: 11px;
+    position: sticky;
+    transform: translate(16rem, -7rem);
+}
+
+
+.featured {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+input[type="checkbox"] {
+    margin: 0 0 0 20px;
+    height: 19px;
+    width: 27px;
+    font-size: 10px;
+    border: 1px solid #333 !important;
+}
+input[type="checkbox"]:checked{
+    background-color: #111 !important;
+}
+
+.feat{font-size: 14px;color: #777;}
+
+.error{ color: red;}
+
+form.sellerProduct {
+    height: 80vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    padding: 0 1rem 0 0px;
+}
+
+.submitDiv {
+    position: sticky;
+    bottom: 0;margin-top: 1rem;
+    background: #fff;
+    padding: 0.5rem 0;
+    width: 100%;
+}
+
+.wraper-row img {
+    width: 70px !important;
+    height: 70px !important;
+}
+
+h4.text-left.pl-4 {
+    padding: 10px 20px;
+}
+
+.wraper-row span#remove {
+    position: relative;
+    right: 5.5rem;
+    top: 30px;
+}
+
+.pull-right {cursor: pointer;}
+

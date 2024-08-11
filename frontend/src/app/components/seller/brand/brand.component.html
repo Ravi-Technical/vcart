@@ -1,0 +1,113 @@
+<section class="seller-dashboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 p-0">
+                <app-sidebar-menu></app-sidebar-menu>
+            </div>
+            <div class="col-lg-9 p-0">
+                <div class="content-dashboard">
+                    <section class="add-product-page">
+                        <div class="container p-4">
+                            <div class="row justify-content-center">
+                                <div class="col-12">
+                                  <!-- Add Brand From Here -->
+                                    <div *ngIf="!updateForm">
+                                        <h3 *ngIf="flag" class="sucees-message">{{message}}</h3>
+                                        <h3 *ngIf="flag1" class="delete-message">{{message}}</h3>
+                                        <h4 class="text-left p-2">Add New Brand</h4>
+                                      <form #brand="ngForm" (ngSubmit)="addBrand(brand.value)">
+                                        <div class="row mb-4">
+                                          <div class="col-lg-6">
+                                            <input type="text" name="brandName" class="form-control" placeholder="Add Brand*" ngModel />
+                                          </div>
+                                          <div class="col-lg-6">
+                                            <input type="text" name="icon" class="form-control" placeholder="Add Icon" ngModel />
+                                          </div>
+                                        </div>
+                                        <div class="row">
+                                          <div class="col-lg-6">
+                                            <input type="text" name="color" class="form-control" placeholder="Add Color" ngModel />
+                                          </div>
+                                          <div class="col-lg-6">
+                                            <input type="submit" value="Submit" class="btn btn-primary" />
+                                          </div>
+                                        </div>
+                                      </form>
+                                    </div>
+                                  <!-- Update Brand From Here -->
+                                  <div *ngIf="updateForm">
+                                    <h3 *ngIf="flag" class="sucees-message">{{message}}</h3>
+                                    <h4 class="text-left p-2">Update Brand</h4>
+                                  <form #brandUpdate="ngForm" (ngSubmit)="submitUpdate(brandUpdate.value)">
+                                    <div class="row mb-4">
+                                      <div class="col-lg-6">
+                                        <input type="text" name="brandName" class="form-control" placeholder="Add Brand*" [(ngModel)]="Brand.brandName" />
+                                      </div>
+                                      <div class="col-lg-6">
+                                        <input type="text" name="icon" class="form-control" placeholder="Add Icon" [(ngModel)]="Brand.icon" />
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-lg-6">
+                                        <input type="text" name="color" class="form-control" placeholder="Add Color" [(ngModel)]="Brand.color" />
+                                      </div>
+                                      <div class="col-lg-6">
+                                        <input type="submit" value="Update" class="btn btn-info" />
+                                      </div>
+                                    </div>
+                                  </form>
+                                </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row justify-content-center mt-4">
+                              <div class="col-12" *ngIf="AllBrands.length == 0">
+                                <h4 class="text-left p-2 mb-2">List of brand</h4>
+                                <p class="ml-4"> Total {{ AllBrands.length }} brand </p>
+                                <h5 class="text-center pt-4">Brand Not Available</h5>
+                                </div>
+                                <div class="col-12" *ngIf="AllBrands.length != 0">
+                                  <h4 class="text-left p-2 mb-2">List of brand</h4>
+                                  <p> Total {{ AllBrands.length }} brand </p>
+                                  <div class="ddf">
+                                  <div class="table-responsive">
+                                    <table class="border table table-striped table-hover">
+                                      <thead>
+                                        <tr>
+                                          <th scope="col">#.</th>
+                                          <th scope="col">Name</th>
+                                          <th scope="col">Color</th>
+                                          <th scope="col">Icon</th>
+                                          <th scope="col">Action</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr *ngFor="let brand of AllBrands | paginate:{ itemsPerPage: 5, currentPage: p };  let i = index">
+                                          <td>{{ (p - 1) * 5 + i + 1 }}.</td>
+                                          <td>{{ brand.brandName }}</td>
+                                          <td>{{ brand.color }}</td>
+                                          <td>{{ brand.icon }}</td>
+                                          <td>
+                                            <a (click)="updateBrand(brand.id)" class="btn btn-info">Update</a>
+                                            <a (click)="deleteBrand(brand.id)" class="btn btn-danger">Delete</a>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                  <div class="mt-4" style="display: flex;align-items: end; justify-content: end;">
+                                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                                 </div>
+                                </div>
+                              </div>
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

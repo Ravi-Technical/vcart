@@ -1,0 +1,45 @@
+<div class="sidebar-dashboard">
+    <div class="profile-pic">
+      <img src="../../../../assets/Sample_User_Icon.png" />
+      <h6>{{userName}}</h6>
+    </div>
+    <div class="links mt-4">
+      <ul>
+        <li>
+          <a routerLink="/user/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+            ><i class="fa fa-solid fa-server"></i> &nbsp;
+            Dashboard</a
+          >
+        </li>
+        <li>
+          <a routerLink="/user/profile" routerLinkActive="active"
+            > <i class="fa fa-solid fa-user"></i> &nbsp;
+            Profile</a
+          >
+        </li>
+        <li>
+          <a routerLink="/user/my-orders" routerLinkActive="active"
+            > <i class="fa fa-solid fa-list-ul"></i>  &nbsp;
+            My Orders</a
+          >
+        </li>
+        <li>
+          <a routerLink="/user/wishlist" routerLinkActive="active"
+            ><i class="fa fa-regular fa-heart"></i> &nbsp;
+            Wishlist</a
+          >
+        </li>
+        <li>
+          <a routerLink="/user/save-for-later" routerLinkActive="active"
+            ><i class="fa fa-solid fa-bookmark"></i> &nbsp;
+            Comming Soon</a
+          >
+        </li>
+        <li routerLinkActive="active">
+          <a (click)="logOut()"> <i class="fa fa-solid fa-lock"></i> &nbsp; Logout</a>
+        </li>
+      </ul>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  
