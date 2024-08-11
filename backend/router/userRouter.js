@@ -147,7 +147,7 @@ router.post('/forgot-password', async (req, res) => {
                 return;
                } else {
                  await userModel.updateOne({email:email}, {$set: {token:token}}, {new:true});
-                 res.status(200).send("Email has been sent successfully");
+                 res.status(200).json({success: true, Message:"Email has been sent successfully"});
                  return;
                }
           })
@@ -172,7 +172,7 @@ router.post('/forgot-password', async (req, res) => {
                     await userModel.findOneAndUpdate(
                          {_id : user._id}, {$set:user}, {new:true}
                     );
-                    res.status(200).send("Your password has been changed successfully");
+                    res.status(200).json({message:"Your password has been changed successfully"});
                } catch(err){
                   res.status(500).send("Something went wrong!..");
                }

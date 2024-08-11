@@ -28,9 +28,6 @@ export class ForgetPasswordComponent implements OnInit {
         alert("Password reset link has been sent successfully on your email address");
         this.forgetPassword.reset();
        }
-    },
-    (error)=>{
-      alert("Invalid credential please try again!..");
     }
   )
   }
