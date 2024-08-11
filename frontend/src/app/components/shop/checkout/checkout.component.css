@@ -114,7 +114,7 @@ span.discount {
 
 .place-order {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     background: #fff;
     padding: 1rem;
     position: sticky;

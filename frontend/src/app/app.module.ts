@@ -14,7 +14,6 @@ import {NgxPaginationModule } from 'ngx-pagination';
 import { TokenServiceService } from './@core/token-service.service';
 import { HomeComponent } from './pages/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 
@@ -37,7 +36,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     NgbModule,
     NgxPaginationModule,
     BrowserAnimationsModule,
-    NgxChartsModule,
+
 
   ],
   

@@ -138,7 +138,7 @@ span.down-arrow {
     border-top: 1px solid #ddd;
     padding: 10px 0;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 span.wishlist {

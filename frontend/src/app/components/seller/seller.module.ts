@@ -13,7 +13,7 @@ import { BrandComponent } from './brand/brand.component';
 import { CategoryComponent } from './category/category.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
@@ -37,7 +37,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     SellerRoutingModule,
     FormsModule,
     NgxPaginationModule,
-    NgxChartsModule,
+   
     ReactiveFormsModule
   ]
 })
