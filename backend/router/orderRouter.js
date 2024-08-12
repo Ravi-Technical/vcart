@@ -60,7 +60,7 @@ router.post('/order', async (req, res) => {
       service: 'gmail',
       auth: {
         user: process.env.USER,
-        pass: 'utwutamcanvaegag'
+        pass: process.env.PASSWORD
       }
     })
     const mailOptions = {
