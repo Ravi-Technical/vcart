@@ -13,6 +13,7 @@ export class SideBarComponent implements OnInit {
   constructor(private dataSource:ProductService, private router:Router){}
 
   ngOnInit(): void {
+         
         if(localStorage.getItem('userName')){
             this.userName = localStorage.getItem('userName');
         }

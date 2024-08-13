@@ -43,7 +43,7 @@ export class ProfileComponent implements OnInit {
     this.dataSource.updateCurrentUser(profileData).subscribe(res=>{
       if(res){
         localStorage.setItem('tempData', JSON.stringify(res));
-        let uName = JSON.parse(localStorage.getItem('tempData')!).name
+        let uName = localStorage.getItem('tempData')!==undefined ? JSON.parse(localStorage.getItem('tempData')!).name : null;
         this.dataSource.isUserLoggedIn.next(uName);
         localStorage.setItem('userName', uName);
         this.element.innerHTML = "Submit";
