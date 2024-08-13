@@ -133,7 +133,7 @@ router.post('/forgot-password', async (req, res) => {
               <h2>Forget Password Request</h2>
               <p>Dear ${findUser.name}, </p><br>
               <p>We have received a request to reset your password, to complete the password reset process, please click on the below button:</p>
-              <a href="${process.env.LIVE_URL}/user/reset-password/${token}"><button style="background-color:#6c58ef; color:white; padding:10px 20px; border:none; 
+              <a href="${process.env.LIVE_URL}/user/reset-password/${token}"><button style="background-color:#6c58ef; cursor:pointer;color:white; padding:10px 20px; border:none; 
               cursor: pointer; border-radius:2px; ">Reset Password</button></a>
               <p>Please note that the link is valid for 30 mint after that it will expire</p><br>
               <p>Thank You</p>

@@ -60,6 +60,7 @@ export class ResetPasswordComponent implements OnInit {
    }
     this.productService.genericResetPassword(userObj).subscribe(res=>{
       if(res && res !==null && res !== undefined){
+          alert("Your password has been successfully reset")
           this.router.navigate(['/user/login']);
       }
     })
