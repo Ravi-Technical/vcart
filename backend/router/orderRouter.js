@@ -57,7 +57,7 @@ router.post('/order', async (req, res) => {
     await order.save();
     // Mail Sent
     const mailTranspoter = nodemailer.createTransport({
-      service: 'gmail',
+      host: "smtp.gmail.com",
       auth: {
         user: process.env.USER,
         pass: process.env.PASSWORD
