@@ -86,3 +86,29 @@ section.ads-products img {
     width: 100%;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/********************************* Responsive Mobile Device **********************************/
+
+@media only screen and (max-width: 600px) {
+    section.Featured-products, section.ads-products {
+        background-color: transparent;
+    }
+
+    section.ads-products img {
+        margin-top: 1rem;
+    }
+
+}

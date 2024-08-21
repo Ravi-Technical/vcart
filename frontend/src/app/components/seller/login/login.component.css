@@ -80,3 +80,32 @@ span.loginForm {
     margin: auto;
     display: block;
 }
+
+
+
+
+
+
+
+
+
+/********************************* Responsive Mobile Device **********************************/
+
+@media only screen and (max-width: 600px) {
+  
+
+    .seller-login {
+        height: auto;
+    }
+
+    .inner-login img {
+        width: 100%;
+    }
+
+    .form-area {
+        position: relative;
+        top: 0rem;
+    }
+
+}
+

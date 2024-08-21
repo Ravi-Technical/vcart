@@ -78,3 +78,28 @@ input.form-control::placeholder, textarea.form-control::placeholder {
     color: #7a7777;
     font-weight: 300;
 }
+
+
+
+
+
+/********************************* Responsive Mobile Device **********************************/
+
+@media only screen and (max-width: 600px) {
+
+    .login-wraper {
+        background: #e1e5ea !important;
+        width: 100%;
+    }
+
+    .header-area h6 {
+        transform: translate(-1.5rem, 0px) !important;
+    }
+   
+    .body-area h4 {margin:0 1rem 0 0px;}
+
+    .login-inner {
+        transform: translate(0rem, 4rem);padding: 0 1rem;
+    }
+
+}
