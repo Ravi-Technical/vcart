@@ -16,6 +16,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
+ 
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     NgbModule,
     NgxPaginationModule,
     BrowserAnimationsModule,
-
+    
 
   ],
   

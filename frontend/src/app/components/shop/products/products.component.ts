@@ -66,6 +66,11 @@ export class ProductsComponent {
 
   resultData:any = [];
 
+  priceValue!:number;
+
+  priceFiltredProduct:any[] = [];
+
+
   constructor(private sellerService:SellerService, private productService:ProductService, private route:ActivatedRoute, private router:Router){}
 
   ngOnInit(): void {
@@ -102,6 +107,21 @@ export class ProductsComponent {
           searchProduct.style.display="block";
     } 
   });
+   
+ let priceFilter:any = document.querySelector('#priceFilter');
+
+  priceFilter.addEventListener('change', (e)=>{
+    this.priceValue = e.target.value;
+    this.priceFiltredProduct = [];
+    this.priceFiltredProduct = this.tempAllProduct.filter((prod: any)=>{
+          if(this.priceValue !=0 || this.priceValue == null){
+           return prod.salePrice <= this.priceValue;
+          }
+         });
+     this.wholeProducts = [];   
+     this.wholeProducts = this.priceFiltredProduct; 
+    console.log("this.wholeProducts", this.wholeProducts);
+  })
 
   } // END ngOnIt();
 
@@ -178,14 +198,18 @@ sizeFilter(event:any){
 }
 
 // Price Filter 
-priceFilter(){
-  this.wholeProducts = this.wholeProducts.filter((prod: any)=>{
-     if(this.value !=0 || this.value == null){
-      return prod.salePrice <= this.value;
-     }
-    }); 
+// priceFilter(eventHandler){
+//   let inputValue = parseInt(eventHandler.target.value) ;
+//   let priceValue:any = document.querySelector('#priceValue');
+//    priceValue.textContent = inputValue*inputValue;
+//    inputValue = parseInt(priceValue.textContent);
+//    this.wholeProducts = this.wholeProducts.filter((prod: any)=>{
+//     if(inputValue !=0 || inputValue == null){
+//      return prod.salePrice <= inputValue;
+//     }
+//    });
     
-} 
+// } 
 // Arrow toggles
 categoryToggle(){
   this.arrowIcon = !this.arrowIcon;
