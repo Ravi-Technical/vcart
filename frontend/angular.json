@@ -61,6 +61,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "testCommerce:build"
+          },
+
           "configurations": {
             "production": {
               "buildTarget": "testCommerce:build:production"
