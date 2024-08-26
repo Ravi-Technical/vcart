@@ -28,6 +28,13 @@ export class HeaderComponent implements OnInit{
    constructor(private dataSorce:SellerService, private productService:ProductService, private router:Router, private route:ActivatedRoute){}
    
    ngOnInit(): void {
+       window.addEventListener('click', (e)=>{
+          let collapseNav = document.querySelector("#collapsibleNavbar");
+           if(collapseNav?.classList[2] === 'show'){
+            collapseNav.classList.remove("show")
+           }
+        })
+
       this.productService.userLogOut.subscribe(resp=>{
         if(resp == false){
           this.userLoginFlag = false;
@@ -115,18 +122,28 @@ export class HeaderComponent implements OnInit{
     this.router.navigate(['/']);
    }
 
-   toggle(e){
-     e.preventDefault();
-     this.collapse = document.getElementsByClassName("collapse");
-     if(this.menuFlag === true){
-      this.collapse[0].style.display="block";
-      this.menuFlag = false;
-     } else if(this.menuFlag === false){
-      this.collapse[0].style.display="none";
-      this.menuFlag = true;
-     }
+  //  toggle(e){
+  //    e.preventDefault();
+  //    this.collapse = document.getElementsByClassName("collapse");
+  //    if(this.menuFlag === true){
+  //     this.collapse[0].style.display="block";
+  //     this.menuFlag = false;
+  //    } else if(this.menuFlag === false){
+  //     this.windowOnClick();
+  //     this.collapse[0].style.display="none";
+  //     this.menuFlag = true;
+  //    }
     
-   }
+  //  }
+
+  //  windowOnClick(){
+  //   let navbarToggler:any = document.querySelector(".navbar-toggler");
+  //   let collapse:any = document.querySelector(".collapse");
+  //   window.addEventListener('toggle', (e)=>{
+  //    alert("its working")
+  //   })
+  //  }
+
 
 
 

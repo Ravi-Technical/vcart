@@ -30,34 +30,31 @@
   <div class="container-fluid">
       <div class="row">
           <div class="col-lg-3 col-6">
-             <button class="navbar-toggler" (click)="toggle($event)" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-                  aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
               <a class="navbar-brand" routerLink="/">
                  <img src="../../assets/logo.png">
               </a>
-              
           </div>
           <div class="col-lg-3 col-12">
              <div class="search-bar">
-              
                 <input type="text" #search placeholder="Search for Products, Brands..." class="form-control">
                 <span (click)="searchProducts(search.value)" class="search-icon"><i class="fa fa-search"></i></span>
-                
              </div>
           </div>
           <div class="col-lg-3 col-12">
-              <div class="collapse navbar-collapse" id="navbarText">
+              <div class="collapse navbar-collapse" id="collapsibleNavbar">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                      <a class="nav-link"  routerLinkActive="active" routerLink="/seller/login">Become a seller</a>
+                      <a class="nav-link" routerLinkActive="active" routerLink="/seller/login"> Become a seller 
+                      </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link"  routerLinkActive="active" routerLink="/shop/products">Shopping</a>
+                      <a class="nav-link" routerLinkActive="active" routerLink="/shop/products">Shopping</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link"  routerLinkActive="active" routerLink="/">Contact us</a>
+                      <a class="nav-link" routerLinkActive="active" routerLink="/">Contact us</a>
                     </li>
                   </ul>
                 </div>
@@ -78,6 +75,8 @@
       </div>
   </div>
 </nav>
+ 
+
 
 
 
