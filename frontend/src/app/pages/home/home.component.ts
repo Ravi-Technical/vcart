@@ -16,6 +16,8 @@ import  app  from "src/app/firebase"
 })
 export class HomeComponent implements OnInit {
 
+ 
+
   featuredProducts: any = [];
 
   img:any;
@@ -38,6 +40,8 @@ export class HomeComponent implements OnInit {
 
   formBuilder: any;
 
+  isLoading:boolean = false;
+
  
   constructor(private dataSource: SellerService, private _productService: ProductService, private router: Router, private config: NgbCarouselConfig) {
     config.interval = 2000;
@@ -47,13 +51,14 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      
     this.alertSuccess = document.getElementById('alert-success');
     this.message = document.getElementById('message');
     // Featured Products
     this.dataSource.getFeaturedProducts().subscribe(res => {
-      this.featuredProducts = res ? res : [""];
-      this.featuredProducts = this.featuredProducts.slice(0, 10);
+      if(res && res !==undefined && res !==null) {
+        this.isLoading = true;
+        this.featuredProducts = res ? res : [];
+      }
     });
     this._productService.wishlisted_Products().subscribe((res: any) => {
       let wishClass: any = document.getElementsByClassName('wishlist');

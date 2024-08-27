@@ -15,6 +15,8 @@ import { TokenServiceService } from './@core/token-service.service';
 import { HomeComponent } from './pages/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { LoaderComponent } from './common_components/loader/loader.component';
+import { ProductPlaceholderComponent } from './common_components/product-placeholder/product-placeholder.component';
 
  
 
@@ -24,6 +26,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
         FooterComponent,
         HomeComponent,
         PageNotFoundComponent,
+        LoaderComponent,
+        ProductPlaceholderComponent
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
         CommonModule,
