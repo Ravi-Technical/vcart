@@ -40,8 +40,7 @@ export class HomeComponent implements OnInit {
 
   formBuilder: any;
 
-  isLoading:boolean = false;
-
+  isLoading!:boolean;
  
   constructor(private dataSource: SellerService, private _productService: ProductService, private router: Router, private config: NgbCarouselConfig) {
     config.interval = 2000;
@@ -55,9 +54,13 @@ export class HomeComponent implements OnInit {
     this.message = document.getElementById('message');
     // Featured Products
     this.dataSource.getFeaturedProducts().subscribe(res => {
+      res = []
       if(res && res !==undefined && res !==null) {
         this.isLoading = true;
         this.featuredProducts = res ? res : [];
+      } else if(res == null || res == undefined){
+        this.isLoading = false;
+        this.featuredProducts = [];
       }
     });
     this._productService.wishlisted_Products().subscribe((res: any) => {
@@ -116,6 +119,10 @@ export class HomeComponent implements OnInit {
     } else {
       this.router.navigate(['/user/login']);
     }
+  }
+
+  image(n: number):Array<number> {
+    return Array(n)
   }
 
  
