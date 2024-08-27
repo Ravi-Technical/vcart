@@ -54,7 +54,6 @@ export class HomeComponent implements OnInit {
     this.message = document.getElementById('message');
     // Featured Products
     this.dataSource.getFeaturedProducts().subscribe(res => {
-      res = []
       if(res && res !==undefined && res !==null) {
         this.isLoading = true;
         this.featuredProducts = res ? res : [];
