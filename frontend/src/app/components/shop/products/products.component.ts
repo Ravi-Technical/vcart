@@ -70,6 +70,7 @@ export class ProductsComponent {
 
   priceFiltredProduct:any[] = [];
 
+  isLoading!:boolean;
 
   constructor(private sellerService:SellerService, private productService:ProductService, private route:ActivatedRoute, private router:Router){}
 
@@ -143,9 +144,14 @@ export class ProductsComponent {
  // ALL Products
  getAllproducts(){
     this.sellerService.getAllProducts().subscribe(res=>{
-    this.tempAllProduct = res ? res : [""];
-    this.wholeProducts =  res ? res : [""];
-   })
+     if(res && res !==null && res !==undefined) {
+      this.isLoading = true;
+      this.tempAllProduct = res ? res : [];
+        this.wholeProducts =  res ? res : [];
+     } else if (res == null || res == undefined){
+          this.wholeProducts = [];
+     }
+   });
  }
 // Get ALL Category
 getAllCategory(){
@@ -294,6 +300,12 @@ newTrend() {
   this.getAllproducts();
   
 }
+
+// product Not Found
+productNotFound(n: number):Array<number> {
+  return Array(n)
+}
+
 
 displayStyle = "none"; 
   

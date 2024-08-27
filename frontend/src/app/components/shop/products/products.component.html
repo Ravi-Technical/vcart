@@ -102,11 +102,13 @@
                 </div>
               </div>
               <!-- END Search Product Display Card -->
-               
+
               <div class="product-wraper" id="product-listing">
                   <!-- Display All Products -->
                    <div class="row" *ngIf="!flag">
-                      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12" *ngFor="let item of wholeProducts | paginate:{ itemsPerPage: 28, currentPage: p }; let i = index">
+                    @defer(when isLoading) {
+                      @for(item of wholeProducts | paginate:{ itemsPerPage: 28, currentPage: p }; track item; let i = $index) {
+                      <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
                         <div class="product-grid">
                           <span class="wishlist" id="{{item.id}}" (click)="wishlistItem(item.id)"><i class="fa fa-heart" aria-hidden="true"></i></span>
                            <a routerLink="/shop/product-details/{{item.id}}">
@@ -120,12 +122,33 @@
                            </a>
                           </div>
                       </div>
+                      }
+                      @empty {
+                        @for(img of productNotFound(16);track img; let index = $index) { 
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+                          <div class="card">
+                            <img src="../../../assets/no-prduct.png">
+                          </div>
+                        </div>
+                      }
+                     }
+                    }
+                    @placeholder{
+                      @for(img of productNotFound(16);track img; let index = $index) { 
+                        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+                          <div class="card">
+                            <img src="../../../assets/loader-image.png">
+                          </div>
+                        </div>
+                      }
+                    } 
+
                    </div>
-                   <div class="row text-center" *ngIf="wholeProducts.length == 0"> 
+                   <!-- <div class="row text-center" *ngIf="wholeProducts.length == 0"> 
                      <div class="col-lg-12 text-center">
                        <p><strong>Product Not Found! </strong></p>
                      </div>
-                   </div>
+                   </div> -->
 
                    <!-- Display Filtred Products -->
                    <div class="row-wraper">

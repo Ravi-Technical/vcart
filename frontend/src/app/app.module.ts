@@ -36,5 +36,10 @@ import { ProductPlaceholderComponent } from './common_components/product-placeho
         ComponentsModule,
         NgbModule,
         NgxPaginationModule,
-        BrowserAnimationsModule], providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenServiceService, multi: true }, provideHttpClient(withInterceptorsFromDi())] })
+        BrowserAnimationsModule],
+        
+
+        providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenServiceService, multi: true }, provideHttpClient(withInterceptorsFromDi())] })
+
+
 export class AppModule { }

@@ -21,6 +21,7 @@ import { FilterPipe } from 'src/app/components/shop/filter.pipe';
     ViewcartComponent,
     OrderComponent,
     FilterPipe
+   
   ],
   imports: [
     CommonModule,

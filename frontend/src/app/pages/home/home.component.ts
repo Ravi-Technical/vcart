@@ -120,7 +120,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  image(n: number):Array<number> {
+  productNotFound(n: number):Array<number> {
     return Array(n)
   }
 
