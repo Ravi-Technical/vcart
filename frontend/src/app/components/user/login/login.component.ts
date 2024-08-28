@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit{
       this.findEmail(email);
     } else {
       alert("Please enter valid email");
+      this.userReg.controls['email'].reset();
     }
     
   }
