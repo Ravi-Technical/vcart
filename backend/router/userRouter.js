@@ -19,12 +19,13 @@ router.post('/register', async (req, res) => {
                     pincode: req.body.pincode,
                     city: req.body.city,
                     state: req.body.state,
+                    status: req.body.status,
                     alternatePhone: req.body.alternatePhone
                });
                await userBody.save();
                res.status(201).send({ success: true, message: "User has been created successfully" });
           } else {
-               res.status(200).send({ message: "User already exists please try another email address!" })
+               res.status(200).send({ success: false, message: "User already exists please try another email address!" })
           }
 
      } catch (err) {
@@ -36,18 +37,19 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
      try {
           const userDetails = await userModel.findOne({ email: req.body.email });
-          const tempUserDetails = await userModel.findOne({ email: req.body.email });
           const expired = { expiresIn: '1m' };
           if (userDetails) {
-               const comparePassword = bcrypt.compareSync(req.body.password, userDetails.password);
-               if (comparePassword) {
-
-                    const token = jwt.sign({ email: userDetails.email }, "Ravi_Technical", expired);
-
-                    res.status(201).send([userDetails.name, token, tempUserDetails]);
-
-               } else {
-                    res.status(200).send({ success: false, message: "Invalid Credential" });
+               if(userDetails.status == true){
+                    const comparePassword = bcrypt.compareSync(req.body.password, userDetails.password);
+                    if (comparePassword) {
+                         const token = jwt.sign({ email: userDetails.email }, "Ravi_Technical", expired);
+                         res.status(201).send([userDetails.name, token, userDetails]);
+     
+                    } else {
+                         res.status(200).send({ success: false, message: "Invalid Credential" });
+                    }
+               }else {
+                    res.status(200).send({ success: false, message: "Your account has been blocked" });
                }
           } else {
                res.status(404).send({ success: false, message: "User not found!" });

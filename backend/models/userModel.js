@@ -37,6 +37,10 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    status : {
+        type:Boolean,
+        default:true
+    },
     token: {
         type:String,
         default:""
