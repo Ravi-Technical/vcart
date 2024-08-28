@@ -7,10 +7,11 @@ const nodeMailer = require('nodemailer');
 
 //********************** New User Register **************************//
 router.post('/register', async (req, res) => {
+     console.log(req.body);
      try {
           const email = await userModel.findOne({ email: req.body.email });
           if (!email) {
-               const userBody = new userModel({
+               let userBody = new userModel({
                     name: req.body.name,
                     email: req.body.email,
                     password: bcrypt.hashSync(req.body.password, 10),

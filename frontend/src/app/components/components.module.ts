@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { ComponentsRoutingModule } from './components-routing.module';
 import { ShopModule } from './shop/shop.module';            
 import { SellerModule } from './seller/seller.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [],
@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
     ShopModule,
     SellerModule,
     FormsModule,
+    ReactiveFormsModule
     
   ]
 })

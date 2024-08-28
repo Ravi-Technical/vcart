@@ -1,4 +1,10 @@
 export class userRegisterModel {
+    value(value: any) {
+      throw new Error('Method not implemented.');
+    }
+    reset() {
+      throw new Error('Method not implemented.');
+    }
     name !: string;
     email !: string;
     password !: string;
@@ -7,7 +13,6 @@ export class userRegisterModel {
     pinCode !:number;
     city!:string;
     state!:string;
-    landMark!:string;
     alternatePhone!:string;
     
  }

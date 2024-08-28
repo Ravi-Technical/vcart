@@ -10,18 +10,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
+ 
   loginRegister:boolean = false;
   userReg!:FormGroup;
   uLogin!:FormGroup;
-  emailValidate:string = ""
+  emailValidate:string = "";
   test :any = [];
+  isSubmit!:boolean;
+
   constructor(private dataSource:ProductService, private router:Router){
     // Reguster User FormGroup
     this.userReg = new FormGroup({
       name : new FormControl("", [Validators.required]),
       email : new FormControl("", [Validators.required, Validators.email]),
       password : new FormControl("", [Validators.required, Validators.minLength(5), Validators.maxLength(15)]),
-      mobile : new FormControl("", [Validators.required, Validators.max(12)]),
+      mobile : new FormControl("", [Validators.required, Validators.minLength(10), Validators.maxLength(12)]),
       address : new FormControl("", [Validators.required]),
       pincode : new FormControl("", [Validators.required]),
       city : new FormControl("", [Validators.required]),
@@ -41,6 +44,16 @@ export class LoginComponent implements OnInit{
     this.router.navigate(['/user/dashboard']);
    } 
   }
+
+  verifyEmail(even){
+    if(this.userReg.controls['email'].valid){
+      let email = even.target.value;
+      this.findEmail(email);
+    } else {
+      alert("Please enter valid email");
+    }
+    
+  }
  
   // Login Register Form Toggle
    loginRegisterToggle(){
@@ -59,18 +72,25 @@ export class LoginComponent implements OnInit{
     else if(res.success == false){
       alert("Invalid Credentail");
     }
-
    })
   }
   // Register Form
-  userRegister(userRegister:FormGroup){
-    this.dataSource.genericUserRegister(userRegister.value).subscribe((res)=>{
-      if(res){
-        alert("User Registred Successfully");
-        this.loginRegister = true;
-        userRegister.reset();
-      } 
-    })
+  userRegister(){
+    let rSubmit:any = document.querySelector("#rSubmit");
+    rSubmit.innerHTML = "Loading...";
+    console.log(rSubmit);
+    if(this.userReg.valid){
+      this.dataSource.genericUserRegister(this.userReg.value).subscribe((res:any)=>{
+        if(res && res.success == true){
+          alert("User Registred Successfully");
+          this.loginRegister = true;
+          this.userReg.reset();
+        } 
+      });
+    }else {
+      alert("Input data are not correct");
+    }
+
   }
   // Password Type Change
   eyeChange(event:any){
@@ -86,7 +106,18 @@ export class LoginComponent implements OnInit{
  
  // Check Email Address Exists OR Not
  findEmail(email:string){
+   let allUser:any = []; 
    this.dataSource.allAuthorizedUser().subscribe((res)=>{
+     if(res !==null && res !==undefined){
+        allUser = res;
+        let getUser = allUser.find((u)=>{
+           return u.email == email;
+        });
+        if(getUser){
+            alert("Email already in used, please enter new email address");
+            this.userReg.controls['email'].reset();
+        } 
+     }
    })
  } 
  

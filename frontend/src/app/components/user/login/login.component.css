@@ -19,7 +19,7 @@ span.loginPassword {
 
 span.eye-hideShow {
     position: absolute;
-    left: 7.5rem;
+    left: 8rem;
     margin: -1.8rem 0 0 0;
 }
 span.eye-hideShow .fa{cursor: pointer;color: #444;}
@@ -62,13 +62,16 @@ input.form-control:focus {
     cursor: pointer;
     font-size: 13px !important;
 }
-
+button.btn.mt-4 {
+    position: relative;
+    top: 2rem;
+}
 
 .btn {
     border-radius: 2rem;
     text-transform: uppercase;
     border: none;position: relative;
-    top: 2rem;
+    top: 0rem;
     padding: 13px 50px;
     font-size: 12px;width: auto;
     margin: 0 auto;color: #fff;
@@ -77,6 +80,15 @@ input.form-control:focus {
 input.form-control::placeholder, textarea.form-control::placeholder {
     color: #7a7777;
     font-weight: 300;
+}
+.alert.alert-danger div {
+    font-size: 12px;
+}
+
+.alert {
+    padding: 5px 10px;
+    margin: 10px 0 0 0;
+    border-radius: 1px;
 }
 
 
