@@ -163,6 +163,19 @@ router.post('/reset-password', async(req, res)=>{
     }
 })
 
+// Get all registred seller
+router.get('/generic-seller', async (req, res)=>{
+    try {
+       const getting_seller = await SellerRegister.find({});
+       res.status(200).json({success:true, getting_seller});
+    } catch{
+      res.status(400).json({success:false, message:"Something went wrong!"});
+    }
+})
+
+
+
+
 
 module.exports = router;
 

@@ -133,6 +133,10 @@ export class SellerService {
     return this._http.post(`${this.apiUrl}seller/reset-password`, dataobj);
   }
 
+  get_generic_sellers(){
+    return this._http.get(`${this.apiUrl}seller/generic-seller`);
+  }
+
 //  ************************************* Chart API ****************************************** //
  charts(){
   return this._http.get(`${this.apiUrl}chart`);

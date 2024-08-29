@@ -18,6 +18,10 @@ export class LoginComponent implements OnInit {
   constructor(private dataSource:SellerService, private router:Router){}
 
 ngOnInit(): void {
+  this.dataSource.get_generic_sellers().subscribe(res=>{
+    console.log(res);
+  })
+
   if(localStorage.getItem('sellerToken')){
      this.router.navigate(['/seller/dashboard']);
   }
