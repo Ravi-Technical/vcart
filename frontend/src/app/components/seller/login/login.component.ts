@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SellerService } from 'src/app/@core/seller.service';
 import { Seller, SellerLogin } from '../../models/product.interface';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,6 @@ ngOnInit(): void {
 // Login Form
 loginSubmit(login:SellerLogin){
   this.dataSource.sellerLogin(login).subscribe((res:any)=>{
- 
     if(res.success !== false){
       localStorage.setItem("name", res.name);
       localStorage.setItem("sellerToken", res.token);
@@ -38,14 +38,19 @@ loginSubmit(login:SellerLogin){
 }
 
 // Register Form
-regsiterSubmit(register:Seller){
-  this.dataSource.registerSeller(register).subscribe(res=>{
-    if(res && res !==null && res !== undefined){
-       this.router.navigate(['/seller/dashboard']);
-    }else {
-      alert("Something went wrong!...");
-    }
-  })
+regsiterSubmit(register:any){
+   if(register.valid && register.form.controls.email.valid){
+    this.dataSource.registerSeller(register).subscribe(res=>{
+      if(res && res !==null && res !== undefined){
+         this.router.navigate(['/seller/dashboard']);
+      }else {
+        alert("Something went wrong!...");
+      }
+    });
+   }
+
+  
+
 }
 
 // Login & Register Form Hide Show
@@ -65,6 +70,16 @@ passwordHideShow(event:any){
  }
 
 }
+
+validateEmail(event) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(emailRegex.test(event.target.value)){
+    return true
+  } else {
+    alert("Please enter a valid email address");
+  }
+}
+
 
 
 }

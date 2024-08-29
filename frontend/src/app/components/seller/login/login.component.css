@@ -81,6 +81,16 @@ span.loginForm {
     display: block;
 }
 
+.alert.alert-danger div {
+    font-size: 12px;
+}
+
+.alert {
+    padding: 2px 6px;
+    margin: -8px 0 8px 0;
+    border-radius: 1px;
+    width: 90%;
+}
 
 
 

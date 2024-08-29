@@ -79,7 +79,6 @@ export class LoginComponent implements OnInit{
   userRegister(){
     let rSubmit:any = document.querySelector("#rSubmit");
     rSubmit.innerHTML = "Loading...";
-    console.log(rSubmit);
     if(this.userReg.valid){
       this.dataSource.genericUserRegister(this.userReg.value).subscribe((res:any)=>{
         if(res && res.success == true){
