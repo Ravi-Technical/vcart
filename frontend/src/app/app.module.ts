@@ -15,12 +15,14 @@ import { TokenServiceService } from './@core/token-service.service';
 import { HomeComponent } from './pages/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { LoaderComponent } from './common_components/loader/loader.component';
-import { ProductPlaceholderComponent } from './common_components/product-placeholder/product-placeholder.component';
+import { LoaderComponent } from './common-components/loader/loader.component';
+import { ProductPlaceholderComponent } from './common-components/product-placeholder/product-placeholder.component';
+import { CommonComponentsModule } from './common-components/common-components.module';
 
  
 
-@NgModule({ declarations: [
+@NgModule({
+    declarations: [
         AppComponent,
         HeaderComponent,
         FooterComponent,
@@ -29,15 +31,19 @@ import { ProductPlaceholderComponent } from './common_components/product-placeho
         LoaderComponent,
         ProductPlaceholderComponent
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule,
+
+    bootstrap: [AppComponent],
+    
+    imports: [BrowserModule,
         CommonModule,
         AppRoutingModule,
         FormsModule,
         ComponentsModule,
         NgbModule,
         NgxPaginationModule,
-        BrowserAnimationsModule],
-        
+        BrowserAnimationsModule,
+        CommonComponentsModule
+     ],
 
         providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenServiceService, multi: true }, provideHttpClient(withInterceptorsFromDi())] })
 

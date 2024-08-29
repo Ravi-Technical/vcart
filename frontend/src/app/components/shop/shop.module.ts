@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { OrderComponent } from './order/order.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { FilterPipe } from 'src/app/components/shop/filter.pipe';
- 
+
 
 
 @NgModule({
@@ -20,7 +20,7 @@ import { FilterPipe } from 'src/app/components/shop/filter.pipe';
     CheckoutComponent,
     ViewcartComponent,
     OrderComponent,
-    FilterPipe
+    FilterPipe,
    
   ],
   imports: [

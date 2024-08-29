@@ -92,6 +92,28 @@ span.loginForm {
     width: 90%;
 }
 
+.border-tops {
+    width: 80%;
+    margin: auto;
+    position: relative;
+}
+
+.border-tops::after {
+    position: absolute;
+    content: '';
+    background: #6333d7;
+    height: 4px;
+    width: 50%;
+    right: 0;
+}
+
+.border-tops::before {
+    position: absolute;
+    content: '';left: 0;
+    width: 50%;
+    background: #ff7f00;
+    height: 4px;
+}
 
 
 

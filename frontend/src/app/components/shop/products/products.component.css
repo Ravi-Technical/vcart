@@ -221,6 +221,30 @@ span.wishlist:hover {
     margin-right: 1.2rem;
 }
 
+#product-listing .spinner-border.text-muted {
+    position: relative;
+    display: flex;
+    z-index: 999;
+    left: 48%;
+    bottom: -20rem;
+}
+
+.category_filter .loader-warp {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* ********************************************  CSS Responsive   **********************************************  */

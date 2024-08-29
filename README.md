@@ -8,7 +8,7 @@ password - demo@123 <br>
 ------------------------- Demo Seller ----------------------------- <br>
 Username - ravis3682@gmail.com <br>
 password - demo@123
-# Front end - Angular, TypeScript, JavaScript  ||  Backend - Node JS, Express JS || Database - MongoDB NoSql Database
+# Front end - Angular (18.0.0), TypeScript, JavaScript  ||  Backend - Node JS, Express JS || Database - MongoDB NoSql Database
 Apart from that using some UI part HTML, CSS, Bootstrap & etc.
 Below some application description...
 # User login/registration with authentication 

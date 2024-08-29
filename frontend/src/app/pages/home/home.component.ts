@@ -50,6 +50,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (!('webkitSpeechRecognition' in window)) {
+      alert('Speech recognition not supported in this browser.');
+    } 
+
+    
     this.alertSuccess = document.getElementById('alert-success');
     this.message = document.getElementById('message');
     // Featured Products
@@ -120,8 +125,14 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  // Repeat element in loop
   productNotFound(n: number):Array<number> {
     return Array(n)
+  }
+
+  // Go to shop page
+  gotoShop() {
+      this.router.navigate(['/shop/products']);
   }
 
  

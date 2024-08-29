@@ -23,16 +23,16 @@
   <div class="container-fluid">
      <div class="row m-2 pb-4 pt-4 plr bg-white">
       <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12"> 
-        <img src="../../../assets/ads-banner/ad1.png">
+        <div class="img-warp"><img src="../../../assets/ads-banner/ad1.png"></div>
       </div>
       <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12"> 
-        <img src="../../../assets/ads-banner/ad2.png">
+        <div class="img-warp"><img src="../../../assets/ads-banner/ad2.png"></div>
       </div>
       <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12"> 
-        <img src="../../../assets/ads-banner/ad3.png">
+        <div class="img-warp"><img src="../../../assets/ads-banner/ad3.png"></div>
       </div>
       <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12"> 
-        <img src="../../../assets/ads-banner/ads3.png">
+        <div class="img-warp"><img src="../../../assets/ads-banner/ads3.png"></div>
       </div>
      </div>
   </div>
@@ -43,12 +43,11 @@
 <section class="Featured-products">
 <div class="container-fluid">
     <div class="row m-2 pb-4 pt-4 plr bg-white">
-        <div class="d-flex">
-          <h1 class="mb-4">Featured Products</h1>
+        <div class="title-head">
+          <h1 class="mb-2">Featured Products <span class="pull-right"><i (click)="gotoShop()" class="fa fa-chevron-right"></i></span></h1>
          </div>
          <!-- <i class="fa fa-chevron-left"></i>
          <i class="fa fa-chevron-right"></i> -->
-        
         @defer(when isLoading) {
           @for(featured of featuredProducts.slice(0, 4);track featured; let index = $index) {
             <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
@@ -84,18 +83,34 @@
           <h3>Failed to load dependencies</h3>
           </div>
         }
-        
-        
-
-       
-
-       
 
     </div>
 </div>
 </section>
 
- 
+<!------------------------------- Ads Banner ------------------------------>
+
+<section class="ads-products">
+  <div class="container-fluid">
+     <div class="row m-2 pb-4 pt-4 plr bg-white">
+      <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12"> 
+        <div class="img-warp"><img src="../../../assets/ads-banner/ads5.jpeg"></div>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12"> 
+        <div class="img-warp"><img src="../../../assets/ads-banner/ads6.jpeg"></div>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12"> 
+        <div class="img-warp"><img src="../../../assets/ads-banner/ads7.jpeg"></div>
+      </div>
+      <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12"> 
+        <div class="img-warp"><img src="../../../assets/ads-banner/ads8.jpeg"></div>
+      </div>
+     </div>
+  </div>
+</section>
+<!-- End Banner Wrapper -->
+
+
 
 <div class="alert alert-success" id="alert-success" role="alert">
   <div class="message">

@@ -121,7 +121,6 @@ export class ProductsComponent {
          });
      this.wholeProducts = [];   
      this.wholeProducts = this.priceFiltredProduct; 
-    console.log("this.wholeProducts", this.wholeProducts);
   })
 
   } // END ngOnIt();
@@ -147,7 +146,7 @@ export class ProductsComponent {
      if(res && res !==null && res !==undefined) {
       this.isLoading = true;
       this.tempAllProduct = res ? res : [];
-        this.wholeProducts =  res ? res : [];
+      this.wholeProducts =  res ? res : [];
      } else if (res == null || res == undefined){
           this.wholeProducts = [];
      }
@@ -156,13 +155,13 @@ export class ProductsComponent {
 // Get ALL Category
 getAllCategory(){
   this.sellerService.getAllCategories().subscribe(res=>{
-    this.categoriesList = res ? res : [""];
+    this.categoriesList = res ? res : [];
   })
 }
 // Get All Brand 
 getAllBrands(){
   this.productService.getGenericAllBrands().subscribe(res=>{
-  this.allBrands = res ? res : [""];
+  this.allBrands = res ? res : [];
 })
 }
 // Category Filter 

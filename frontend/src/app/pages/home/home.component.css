@@ -1,14 +1,13 @@
 
 section.Featured-products, section.ads-products {
-    padding: 20px 0 0px 0;background: #f5f5f5;
+    padding: 20px 0 1px 0;background: #f5f5f5;
 }
-
 
 section.Featured-products h1 {
     font-size: 1.5rem;
 }
 
-.plr {padding-left: 15px;padding-right: 15px;}
+.plr {padding-left: 15px;padding-right: 15px;border: 3px solid #bababa2e;}
 
 h5.card-title {
     font-size: 0.9rem;
@@ -87,11 +86,41 @@ section.ads-products img {
 }
 
 
+.img-warp img {
+    overflow: hidden;
+    width: 100%;
+    cursor: pointer;
+}
 
+.img-warp:hover img {
+    transform: scale(1.08);
+    transition: .3s ease-in-out;
+}
+.img-warp {
+    overflow: hidden;
+}
 
+.title-head i {
+    border: 2px solid #ddd;
+    padding: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 16px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
 
-
-
+.title-head i:hover {
+    background: #6c58ef;
+    border: 2px solid #6c58ef;
+    color: #fff;
+    transition: .3s ease-in-out;
+}
 
 
 

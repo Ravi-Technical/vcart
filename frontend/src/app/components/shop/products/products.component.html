@@ -19,14 +19,22 @@
                   <i  *ngIf="arrowIcon" class="fa fa-chevron-up"></i>
                 </span>
               </h4>
-              <div *ngIf="!arrowIcon">
-                <ul>
-                    <li *ngFor="let cat of categoriesList | filter:searchText; let i = index">
-                      <input type="checkbox" id="{{cat.catName}}" name="{{cat.catName}}" value="{{cat.catName}}" (click)="selectCategory($event)">
-                      <label for="{{cat.catName}}">{{cat.catName}}</label><br>
-                    </li>
-                </ul>
-              </div>
+              @defer {
+                <div *ngIf="!arrowIcon">
+                  <ul>
+                      <li *ngFor="let cat of categoriesList | filter:searchText; let i = index">
+                        <input type="checkbox" id="{{cat.catName}}" name="{{cat.catName}}" value="{{cat.catName}}" (click)="selectCategory($event)">
+                        <label for="{{cat.catName}}">{{cat.catName}}</label><br>
+                      </li>
+                  </ul>
+                </div>
+              }
+              @placeholder{
+                <div class="loader-warp">
+                  <div class="spinner-border text-muted"></div>
+                </div>
+              }
+
              </div>
              
              <!-- Brand Filter -->
@@ -37,6 +45,7 @@
                  <i  *ngIf="brandIcon" class="fa fa-chevron-up"></i>
                </span>
              </h4>
+             @defer {
              <div *ngIf="brandIcon">
                <ul>
                    <li *ngFor="let brand of allBrands; let i = index">
@@ -45,6 +54,13 @@
                    </li>
                </ul>
              </div>
+            }
+            @placeholder{
+              <div class="loader-warp">
+                <div class="spinner-border text-muted"></div>
+              </div>
+            }
+
             </div>
 
             <!-- Brand Filter -->
@@ -55,6 +71,7 @@
                  <i  *ngIf="sizeFlag" class="fa fa-chevron-up"></i>
                </span>
              </h4>
+             @defer {
              <div *ngIf="sizeFlag">
                <ul>
                    <li *ngFor="let size of allSize; let i = index">
@@ -63,9 +80,15 @@
                    </li>
                </ul>
              </div>
+            }
+             @placeholder{
+              <div class="loader-warp">
+                <div class="spinner-border text-muted"></div>
+              </div>
+            }
             </div>
-
             </div>
+            
              <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12">
              <div class="bg-white p-2 pt-4">
               <div class="sort-by">
@@ -134,6 +157,9 @@
                      }
                     }
                     @placeholder{
+                      <div class="loader-warp">
+                        <div class="spinner-border text-muted"></div>
+                      </div>
                       @for(img of productNotFound(16);track img; let index = $index) { 
                         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
                           <div class="card">
