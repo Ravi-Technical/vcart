@@ -2,7 +2,7 @@
 Using below technologies like details <br>
 For demo user & demo seller access credentials below... <br>
 ------------------------- Demo User ----------------------------- <br>
-https://vcart-frontend.onrender.com/
+https://vcart-frontend.onrender.com/ <br>
 Username - ravis3682@gmail.com<br>
 password - demo@123 <br>
 ------------------------- Demo Seller ----------------------------- <br>
