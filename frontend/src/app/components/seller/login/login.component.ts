@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { SellerService } from 'src/app/@core/seller.service';
 import { Seller, SellerLogin } from '../../models/product.interface';
@@ -11,6 +11,8 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
+  @ViewChild('registerForm') registerForm!:NgForm
+
   loginRegister!:boolean;
 
   message:any;
@@ -18,10 +20,6 @@ export class LoginComponent implements OnInit {
   constructor(private dataSource:SellerService, private router:Router){}
 
 ngOnInit(): void {
-  this.dataSource.get_generic_sellers().subscribe(res=>{
-    console.log(res);
-  })
-
   if(localStorage.getItem('sellerToken')){
      this.router.navigate(['/seller/dashboard']);
   }
@@ -52,9 +50,6 @@ regsiterSubmit(register:any){
       }
     });
    }
-
-  
-
 }
 
 // Login & Register Form Hide Show
@@ -76,9 +71,17 @@ passwordHideShow(event:any){
 }
 
 validateEmail(event) {
+  let getSeller = [];
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if(emailRegex.test(event.target.value)){
-    return true
+    this.dataSource.get_generic_sellers().subscribe((res:any)=>{
+      getSeller = res.getting_seller;
+     let holdSingleSeller = getSeller.find((s:any)=>s.email == event.target.value);
+     if(holdSingleSeller){
+        alert("Your email alread in used, please enter new enter email id");
+        this.registerForm.controls['email'].reset();
+     }
+    })
   } else {
     alert("Please enter a valid email address");
   }
