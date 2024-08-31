@@ -12,7 +12,7 @@
             </h6>
           </div>
           <!-- Register Form -->
-          <div class="body-area" *ngIf="!loginRegister">
+          <div class="body-area signUp-wrap" *ngIf="!loginRegister">
             <p>New user sign up</p>
             <form [formGroup]="userReg" (ngSubmit)="userRegister()">
               <div class="row">
@@ -103,7 +103,7 @@
             </form> -->
           </div>
           <!-- Login Form -->
-          <div class="body-area" *ngIf="loginRegister">
+          <div class="body-area login-wrap" *ngIf="loginRegister">
             <p>Login to continue</p>
             <form class="mt-4" [formGroup]="uLogin" (ngSubmit)="userLogin(uLogin.value)">
               <div class="row">

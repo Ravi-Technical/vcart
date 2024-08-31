@@ -101,27 +101,55 @@ section.ads-products img {
 }
 
 .title-head i {
-    border: 2px solid #ddd;
-    padding: 10px;
+    padding: 10px;border:2px solid #6c58ef;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 16px;
+    width: 40px;
+    height: 40px;
+    font-size: 12px;
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 1rem;
     cursor: pointer;
+    background-color: #6c58ef;
+    color: #fff;
 }
 
 .title-head i:hover {
-    background: #6c58ef;
+    background: transparent;
     border: 2px solid #6c58ef;
-    color: #fff;
+    color: #6c58ef;
     transition: .3s ease-in-out;
 }
 
+.carousel-control-next, .carousel-control-prev {
+    position: absolute;
+    top: 30%;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3%;
+    padding: 0;
+    color: #7e7979;
+    text-align: center;
+    border: 0;
+    opacity: 1;
+    transition: opacity .15s ease;
+    background: #ffffff !important;
+    height: 100px;
+    box-shadow: 0px 3px 13px #aea6a657;
+}
+
+.carousel-control-prev {
+    left: 10px;
+}
+
+.carousel-control-next {
+    right: 10px;
+}
 
 
 

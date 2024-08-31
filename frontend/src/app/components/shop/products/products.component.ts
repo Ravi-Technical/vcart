@@ -82,6 +82,7 @@ export class ProductsComponent {
   this.getAllCategory();
   this.getAllBrands();
   // Default wishlisted product
+  debugger
   this.productService.wishlisted_Products().subscribe((res: any) => {
     let wishClass: any = document.getElementsByClassName('wishlist');
    if(res && this.wholeProducts !==null && res !==null && res !=='undefined'){

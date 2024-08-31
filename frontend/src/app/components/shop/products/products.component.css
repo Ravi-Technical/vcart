@@ -249,12 +249,28 @@ span.wishlist:hover {
 
 /* ********************************************  CSS Responsive   **********************************************  */
 
+
 @media (max-width:430px) {
     .bg-white{
         margin-top: 1rem !important;
     }
 }
 
+@media only screen and (max-width: 600px) {  
+
+     .margin-bottom { margin-bottom: 1rem;}
+
+     .product-grid{
+        border: 1px solid #ddd;
+    }
+
+    span.wishlist{
+        right: 3rem;
+        margin: 10px 0 0 0;
+    }
+
+
+}
 
 
 

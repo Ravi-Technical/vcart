@@ -110,7 +110,11 @@ a.navbar-brand h1 {
 
 
 /********************************* Responsive Mobile Device **********************************/
- 
+@media (max-width:390px) {
+    span.search-icon{
+        transform: translate(20rem, 4.8rem);
+    }
+}
 
 @media only screen and (max-width: 600px) {
 
@@ -150,7 +154,7 @@ a.navbar-brand h1 {
         top: 0;
         cursor: pointer;
         font-size: 1rem;
-        transform:translate(22rem, 4.8rem);
+        transform:translate(21rem, 4.8rem);
         color: #6c58ef;
         font-weight: 500;
     }

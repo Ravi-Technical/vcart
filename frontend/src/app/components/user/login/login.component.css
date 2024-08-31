@@ -98,7 +98,7 @@ input.form-control::placeholder, textarea.form-control::placeholder {
 /********************************* Responsive Mobile Device **********************************/
 
 @media only screen and (max-width: 600px) {
-
+     
     .login-wraper {
         background: #e1e5ea !important;
         width: 100%;
@@ -113,5 +113,20 @@ input.form-control::placeholder, textarea.form-control::placeholder {
     .login-inner {
         transform: translate(0rem, 4rem);padding: 0 1rem;
     }
+
+    span.eye-hideShow {
+        right: 2rem;left: auto;
+    }
+
+    .body-area.login-wrap span.eye-hideShow.loginPassword {
+        left: auto;
+        right: auto;
+        display: flex;
+        justify-content: end;
+        align-items: end;
+        width: 20%;
+        margin: -25px 0px 0 10px;
+    }
+
 
 }

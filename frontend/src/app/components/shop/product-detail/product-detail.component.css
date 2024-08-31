@@ -193,3 +193,32 @@ span.wishlist:hover {
 
 
 
+/********************************* Responsive Mobile Device **********************************/
+
+  
+
+@media only screen and (max-width: 600px) {
+  .product-details h5, .product-details p, .colors.pt-2 h6{
+    font-size: 15px;
+   }
+   .waper-product-details { padding:1rem 0;}
+
+      .image-wraper {
+        min-height: fit-content;
+        max-height: inherit;
+      }
+    
+      .product-details {
+        padding-right: 0rem;
+      }
+      .pt-4 { 
+        padding-top: 0.5rem !important;
+    }
+
+   }
+
+
+
+
+
+

@@ -186,3 +186,62 @@ button.saveForLater {
 
 .alert-success {display: none;}
 
+
+
+
+
+
+
+/********************************* Responsive CSS *************************/
+@media (max-width:430px) {
+
+
+    button.saveForLater{
+        font-size: 12px;
+    }
+
+    .saveForLater h6 {
+        font-size: 12px;
+    }
+    .p-details{
+        position: relative;
+        top: 5px;
+    }
+
+}
+
+
+@media only screen and (max-width: 600px) {
+    .p-image {
+        float: left;
+    }
+    .saveForLater{
+        margin-top: 1rem;font-size: 12px;
+    }
+    .saveForLater h6{font-size: 12px;}
+    .saveForLater {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .item-wraper{
+        display:block;
+    }
+
+    .p-details {
+        padding: 0 15px;
+        width:100%;
+        position: relative;
+        left: 14px;
+        top: -4px;
+    }
+
+
+}
+
+
+
+
+
+
+

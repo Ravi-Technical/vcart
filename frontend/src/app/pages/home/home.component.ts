@@ -50,11 +50,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (!('webkitSpeechRecognition' in window)) {
-      alert('Speech recognition not supported in this browser.');
-    } 
-
-    
     this.alertSuccess = document.getElementById('alert-success');
     this.message = document.getElementById('message');
     // Featured Products
@@ -99,7 +94,7 @@ export class HomeComponent implements OnInit {
               this.wishlistId.style.backgroundColor = 'white';
               this.wishlistId.style.color = '#6c58ef';
               this.alertSuccess.style.display = "block";
-              this.message.innerText = ` Product remove from wishlist`;
+              this.message.innerText = ` Product removed successfully from wishlist`;
               setTimeout(() => {
                 this.alertSuccess.style.display = "none";
               }, 2000);
