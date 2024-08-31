@@ -97,9 +97,9 @@ router.post('/forgot-password', async(req, res)=>{
       const token = jwt.sign(payload, process.env.TOKEN_SECRET_KET, {expiresIn : expireTime});
       const mailTranspoter = nodeMailer.createTransport({
         service: "gmail",
-        auth : {
-          user:  "ravis3682@gmail.com",
-          pass : "kfqyzxzrpjrnenxb"
+        auth: {
+          user: process.env.USER,
+          pass: process.env.PASSWORD
         }
       }) 
       const mailDetails = ({

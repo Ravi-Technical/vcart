@@ -8,7 +8,7 @@ footer {
     line-height: 1.8;
 }
 
-.wrap li a {
+.wrap li a, .wrap li {
     text-decoration: none;
     color: #aca9be;
 }
