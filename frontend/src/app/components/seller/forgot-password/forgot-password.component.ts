@@ -22,6 +22,8 @@ export class ForgotPasswordComponent implements OnInit {
   } // END onInIt();
 
   forgetForm (email:string){
+    let submitBtn:any = document.getElementById('submitBtn');
+    submitBtn.innerText = "Loading...";
    this.dataSource.genericSellerForgetPassword(email).subscribe(res=>{
     if(res && res !==null && res !==undefined){
        alert("Reset password link has been sent on your email address");
@@ -31,8 +33,10 @@ export class ForgotPasswordComponent implements OnInit {
      }
    }, (err)=>{
      throw new Error();
-   })
+   });
+
   }
 
 
 } // END CLASS HERE
+

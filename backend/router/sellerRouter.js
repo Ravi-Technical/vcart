@@ -103,7 +103,10 @@ router.post('/forgot-password', async(req, res)=>{
         }
       }) 
       const mailDetails = ({
-        from:"ravis3682@gmail.com",
+        from: {
+          name:'Vcart',
+          address:process.env.USER
+        },
         to:seller.email,
         subject:"Reset Password",
         html:`
