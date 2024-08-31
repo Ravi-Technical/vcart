@@ -22,18 +22,20 @@ export class ForgotPasswordComponent implements OnInit {
   } // END onInIt();
 
   forgetForm (email:string){
+   if(email){
     let submitBtn:any = document.getElementById('submitBtn');
     submitBtn.innerText = "Loading...";
-   this.dataSource.genericSellerForgetPassword(email).subscribe(res=>{
-    if(res && res !==null && res !==undefined){
-       alert("Reset password link has been sent on your email address");
-       this.forgetPassword.reset();
-     } else {
-       alert("Invalid email address");
-     }
-   }, (err)=>{
-     throw new Error();
-   });
+    this.dataSource.genericSellerForgetPassword(email).subscribe(res=>{
+      if(res && res !==null && res !==undefined){
+         alert("Reset password link has been sent on your email address");
+         this.forgetPassword.reset();
+       } else {
+         alert("Invalid email address");
+       }
+     }, (err)=>{
+       throw new Error();
+     });
+   }
 
   }
 
