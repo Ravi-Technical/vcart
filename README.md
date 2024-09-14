@@ -1,4 +1,4 @@
-# We have make Ecommerce Web Application (MEAN Stack)
+# <h4>We have make Ecommerce Web Application (MEAN Stack)</h4>
 Using below technologies like details <br>
 For demo user & demo seller access credentials below... <br>
 ------------------------- Demo User ----------------------------- <br>
@@ -7,7 +7,7 @@ Username - ravis3682@gmail.com<br>
 password - demo@123 <br>
 ------------------------- Demo Seller ----------------------------- <br>
 Username - suneelkumarv87@gmail.com <br>
-password - demo@123<br>
+password - demo@123
 # Front end - Angular (18.0.0), TypeScript, JavaScript  ||  Backend - Node JS, Express JS || Database - MongoDB NoSql Database
 Apart from that using some UI part HTML, CSS, Bootstrap & etc.
 Below some application description...
