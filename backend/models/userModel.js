@@ -43,8 +43,12 @@ const userSchema = new mongoose.Schema({
     },
     token: {
         type:String,
-        default:""
-    }
+        default:null
+    },
+    resetPasswordToken: {
+        type: String,
+        default: null
+  }
 }) 
 
 userSchema.virtual('id').get(function(){

@@ -18,7 +18,7 @@ const fs = require('fs');
 Http Method:Add New Product API 
 API URL:http://localhost:3000/api/v1/product/add-new
 *******/
-router.post(`/add-new`, async (req, res) => {
+router.post(`/add-new`, tokenVerify, async (req, res) => {
   try{
     let product = new Product({
       name: req.body.name,
@@ -97,7 +97,7 @@ router.get(`/details/:id`, async (req, res) => {
 Http Method:Get single product by id
 API URL:http://localhost:3000/api/v1/product/id
 *******/
-router.get(`/:id`, tokenVerify, async (req, res) => {
+router.get(`/:id`, async (req, res) => {
   const product = await Product.findById(req.params.id);
   if (!product) return res.send(404).json({ message: "Product not found" });
   res.send(product);

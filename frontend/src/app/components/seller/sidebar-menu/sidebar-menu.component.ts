@@ -13,7 +13,7 @@ export class SidebarMenuComponent implements OnInit {
     this.dataSource.isSellerLoggedIn.subscribe(res=>{
       if(res || sessionStorage.getItem('token')){
           this.dataSource.sellerProfile().subscribe(res=>{
-            this.sellerName = res[0].name;
+            this.sellerName = res[0]?.name;
           })
       }
     })

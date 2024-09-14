@@ -38,25 +38,25 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
      try {
           const userDetails = await userModel.findOne({ email: req.body.email });
-          const expired = { expiresIn: '1m' };
+          const expired = { expiresIn: '1d' };
           if (userDetails) {
-               if(userDetails.status == true){
-                    const comparePassword = bcrypt.compareSync(req.body.password, userDetails.password);
+               if (userDetails.status == true) {
+                    let comparePassword = bcrypt.compareSync(req.body.password, userDetails.password);
                     if (comparePassword) {
-                         const token = jwt.sign({ email: userDetails.email }, "Ravi_Technical", expired);
-                         res.status(201).send([userDetails.name, token, userDetails]);
-     
-                    } else {
+                         let token = jwt.sign({ email: userDetails.email }, process.env.TOKEN_SECRET_KET, expired);
+                         let updateToken = await userModel.findOneAndUpdate({ email: req.body.email }, { $set: { token: token } }, { new: true });
+                         res.status(201).send([userDetails.name, token, updateToken]);
+                    } else{
                          res.status(200).send({ success: false, message: "Invalid Credential" });
                     }
-               }else {
+               } else {
                     res.status(200).send({ success: false, message: "Your account has been blocked" });
                }
           } else {
                res.status(404).send({ success: false, message: "User not found!" });
           }
-     } catch (err) {
-          res.status(200).send({ success: false, message: "Something went wrong!" });
+     } catch(err){
+          res.status(200).send({ success: false, message: "Something went wrong!", err });
      }
 })
 
@@ -107,16 +107,17 @@ router.get('/currentUser', async (req, res) => {
 router.post('/forgot-password', async (req, res) => {
      const email = req.body.email;
      try {
-          const findUser = await userModel.findOne({ email: { $regex: '^' + email + '$', $options: 'i' } });
+          let findUser = await userModel.findOne({ email: { $regex: '^' + email + '$', $options: 'i' } });
           if (!findUser) {
-               res.status(404).json({success:false , message:"User Not Found!.."})
+               res.status(404).json({ success: false, message: "User Not Found!.." })
                return;
           }
           const payload = {
                email: findUser.email
           }
-         // const expire = 300000;
+          // const expire = 300000;
           const token = jwt.sign(payload, process.env.TOKEN_SECRET_KET, { expiresIn: '30m' });
+ 
           const mailTranspoter = nodeMailer.createTransport({
                host: "smtp.gmail.com",
                auth: {
@@ -126,9 +127,9 @@ router.post('/forgot-password', async (req, res) => {
           });
           const mailDetails = {
                from: {
-                    name:'Vcart',
-                    address:process.env.USER
-                  },
+                    name: 'Vcart',
+                    address: process.env.USER
+               },
                to: email,
                subject: "Reset Password",
                html: `
@@ -139,7 +140,8 @@ router.post('/forgot-password', async (req, res) => {
               <h2>Forget Password Request</h2>
               <p>Dear ${findUser.name}, </p><br>
               <p>We have received a request to reset your password, to complete the password reset process, please click on the below button:</p>
-              <a href="${process.env.LIVE_URL}/user/reset-password/${token}"><button style="background-color:#6c58ef; cursor:pointer;color:white; padding:10px 20px; border:none; 
+              <a style="cursor:pointer;" href="${process.env.LIVE_URL}/user/reset-password/${token}">
+              <button style="background-color:#6c58ef;color:white; padding:10px 20px; border:none; 
               cursor: pointer; border-radius:2px; ">Reset Password</button></a>
               <p>Please note that the link is valid for 30 mint after that it will expired.</p><br>
               <p>Thank You</p>
@@ -147,14 +149,14 @@ router.post('/forgot-password', async (req, res) => {
             </html>
           `
           }
-          mailTranspoter.sendMail(mailDetails, async(err, data)=>{
-               if(err){
-                res.status(200).json({success: false, message:"Something is going to wrong"});
-                return;
+          mailTranspoter.sendMail(mailDetails, async (err, data) => {
+               if (err) {
+                    res.status(200).json({ success: false, message: "Something is going to wrong", err });
+                    return;
                } else {
-                 await userModel.updateOne({email:email}, {$set: {token:token}}, {new:true});
-                 res.status(200).json({success: true, Message:"Email has been sent successfully"});
-                 return;
+                    await userModel.findOneAndUpdate({ email: email }, { $set: { resetPasswordToken: token } }, { new: true });
+                    res.status(200).json({ success: true, Message: "Email has been sent successfully" });
+                    return;
                }
           })
      } catch (err) {
@@ -163,27 +165,27 @@ router.post('/forgot-password', async (req, res) => {
 });
 
 //********************** Reset Password **************************//
- router.post('/reset-password', async(req, res)=>{
-      const token = req.body.token;
-      const password = req.body.password;
-      jwt.verify(token, process.env.TOKEN_SECRET_KET, async(err, data)=>{
-          if(err){
+router.post('/reset-password', async (req, res) => {
+     const token = req.body.token;
+     const password = req.body.password;
+     jwt.verify(token, process.env.TOKEN_SECRET_KET, async (err, data) => {
+          if (err) {
                res.status(500).send("Password reset link has been expired please try again!")
-          } else{
+          } else {
                let resp = data;
-               let user = await userModel.findOne({email : {$regex:'^' + resp.email + '$', $options:'i'}});
+               let user = await userModel.findOne({ email: { $regex: '^' + resp.email + '$', $options: 'i' } });
                let password_encrypt = bcrypt.hashSync(password, 10);
                user.password = password_encrypt;
                try {
                     await userModel.findOneAndUpdate(
-                         {_id : user._id}, {$set:user}, {new:true}
+                         { _id: user._id }, { $set: user }, { new: true }
                     );
-                    res.status(200).json({message:"Your password has been changed successfully"});
-               } catch(err){
-                  res.status(500).send("Something went wrong!..");
+                    res.status(200).json({ message: "Your password has been changed successfully" });
+               } catch (err) {
+                    res.status(500).send("Something went wrong!..");
                }
           }
-      }) 
- })
+     })
+})
 
 module.exports = router; // Export Module 

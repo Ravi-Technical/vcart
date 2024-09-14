@@ -12,16 +12,20 @@ export class TokenServiceService implements HttpInterceptor {
 
   token = localStorage.getItem('sellerToken');
 
+  userToken = localStorage.getItem('sellerToken');
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     
     if(!this.token){
       return next.handle(req);
     }
+    
     let httpheader = req.clone({
       setHeaders : {
         Authorization:this.token || "",
       }
-    }) 
+    });
+
     return next.handle(httpheader);
 
   }

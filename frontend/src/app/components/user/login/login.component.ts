@@ -62,6 +62,8 @@ export class LoginComponent implements OnInit{
    }
   // Login Form
   userLogin(loginData:userLoginModel){
+    let submitBtn:any = document.querySelector('#submit');
+    submitBtn.innerHTML = "Loading...";
    this.dataSource.genericUserLogin(loginData).subscribe((res:any)=>{
     if(res.success !== false){
       this.dataSource.isUserLoggedIn.next(res[0]);

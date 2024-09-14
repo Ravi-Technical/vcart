@@ -37,6 +37,7 @@ router.post('/login', async(req, res)=>{
     const comparePassword = await bcrypt.compareSync(req.body.password, login.password);
     if(login.email && comparePassword){
        let token = await jwt.sign({email:login.email},  process.env.TOKEN_SECRET_KET, option);
+       await SellerRegister.findOneAndUpdate({email:login.email}, {$set:{token:token}}, {new:true});
        res.status(200).json({
         "name":login.name,
         "email":login.email,
@@ -46,9 +47,9 @@ router.post('/login', async(req, res)=>{
       res.status(201).send({success:false, message:"Invalid Credential"});
     }
   }catch(err){
-    res.status(201).send({success:false, message:"Invalid Credential"});
+    res.status(201).send({success:false, message:"Something went wrong!"});
   }
-})
+});
 
 // Get Profile Data API
 router.get('/profile', async(req, res)=>{
@@ -135,7 +136,7 @@ router.post('/forgot-password', async(req, res)=>{
          res.status(500).json({success:false, message:"Something is missing"});
          return
         } else {
-          await SellerRegister.updateOne({email:seller.email}, {$set:{token:token}}, {new:true});
+          await SellerRegister.updateOne({email:seller.email}, {$set:{resetPasswordToken:token}}, {new:true});
           res.status(200).json({success:true, message:"Reset password link has been sent successfully on your email."});
         }
       })
@@ -150,7 +151,6 @@ router.post('/reset-password', async(req, res)=>{
     try {
         let token = req.body.token;
         let password = req.body.password;
-        console.log();
         jwt.verify(token, process.env.TOKEN_SECRET_KET, async(err, user)=>{
           if(err){
              res.status(500).json({success:false, message:"Token is expired please try again"})
@@ -166,7 +166,7 @@ router.post('/reset-password', async(req, res)=>{
         });
          
     } catch(err){
-        res.status(500).json({success:false, message:"Something went wrong!"})
+        res.status(500).json({success:false, message:"Something went wrong!"});
     }
 })
 
