@@ -38,6 +38,8 @@ export class ResetPasswordComponent implements OnInit {
 
   // Reset Password 
   resetPasswordForm(formData:any){
+    let submit:any = document.querySelector('#submit');
+    submit.innerHTML = "Loading...";
         let collection = {
           token:this.token,
           password:formData.password
@@ -45,12 +47,15 @@ export class ResetPasswordComponent implements OnInit {
         this.dataSource.genericSellerResetPassword(collection).subscribe(res=>{
          if(res && res !==null && res !==undefined){
           alert("Password has been changed successfully");
+          submit.innerHTML = "Submit";
           this.router.navigate(['/seller/login']);
          } else {
           alert("Reset password link has been expired please try again")
+          submit.innerHTML = "Submit";
          }
         });
   }
+  
 
   // Get Form Field
   get f(){

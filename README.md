@@ -6,8 +6,8 @@ https://vcart-frontend.onrender.com/ <br>
 Username - ravis3682@gmail.com<br>
 password - demo@123 <br>
 ------------------------- Demo Seller ----------------------------- <br>
-Username - ravis3682@gmail.com <br>
-password - demo@123
+Username - suneelkumarv87@gmail.com <br>
+password - demo@123<br>
 # Front end - Angular (18.0.0), TypeScript, JavaScript  ||  Backend - Node JS, Express JS || Database - MongoDB NoSql Database
 Apart from that using some UI part HTML, CSS, Bootstrap & etc.
 Below some application description...

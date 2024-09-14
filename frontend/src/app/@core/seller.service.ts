@@ -2,18 +2,22 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Brand, Seller, SellerLogin, category, newProductInterface } from '../components/models/product.interface';
 import { BehaviorSubject, Subject } from 'rxjs';
-
+ 
 @Injectable({
   providedIn: 'root'
 })
 
 export class SellerService {
 
-  apiUrl = "https://vcart-backend-1kvp.onrender.com/api/v1/";
+  //apiUrl = "https://vcart-backend-1kvp.onrender.com/api/v1/";
+
+  apiUrl = "http://localhost:3000/api/v1/";
 
   isSellerLoggedIn = new Subject<string>();
 
   sellerLogOut = new Subject<boolean>();
+
+  
 
   constructor(private _http: HttpClient) { }
 
@@ -69,7 +73,6 @@ export class SellerService {
 
    // Delete Category
    deleteCategory(id:number){
-    debugger
     return this._http.delete(`${this.apiUrl}category/delete/${id}`);
   }
 

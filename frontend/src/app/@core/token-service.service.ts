@@ -2,9 +2,8 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
+
 export class TokenServiceService implements HttpInterceptor {
  
   contentType:any;
@@ -14,12 +13,13 @@ export class TokenServiceService implements HttpInterceptor {
   token = localStorage.getItem('sellerToken');
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    
     if(!this.token){
       return next.handle(req);
     }
     let httpheader = req.clone({
       setHeaders : {
-        Authorization:this.token || ""
+        Authorization:this.token || "",
       }
     }) 
     return next.handle(httpheader);
@@ -27,3 +27,5 @@ export class TokenServiceService implements HttpInterceptor {
   }
 
 }
+
+ 

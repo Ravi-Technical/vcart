@@ -87,9 +87,13 @@ router.put('/profile-update', async(req, res)=>{
 
 // Forgot Password
 router.post('/forgot-password', async(req, res)=>{
+   
   try{
-    let seller = await SellerRegister.findOne({email:req.body.email});
-    if(seller && seller !==null && seller !== undefined){
+    let seller = await SellerRegister.findOne({ email: req.body.email});
+   if(!seller){
+    res.status(500).json({success:false, message:"User not found!"});
+   }
+    if(seller){
       const payload = {
         email:seller.email
       }
@@ -135,7 +139,7 @@ router.post('/forgot-password', async(req, res)=>{
           res.status(200).json({success:true, message:"Reset password link has been sent successfully on your email."});
         }
       })
-    }
+    } 
   } catch(err){
     res.status(500).json({success:false, message:"Something went wrong!....."});
   }
