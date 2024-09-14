@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { ComponentsModule } from './components/components.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NgxPaginationModule } from 'ngx-pagination';
-import { TokenServiceService } from './@core/token-service.service';
+import { TokenServiceService, TokenUserService } from './@core/token-service.service';
 import { HomeComponent } from './pages/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
@@ -45,7 +45,8 @@ import { CommonComponentsModule } from './common-components/common-components.mo
         CommonComponentsModule
      ],
 
-        providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenServiceService, multi: true }, provideHttpClient(withInterceptorsFromDi())] })
+        providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenServiceService, multi: true }, { provide: HTTP_INTERCEPTORS, useClass: TokenUserService, multi: true },
+             provideHttpClient(withInterceptorsFromDi())] })
 
 
 export class AppModule { }
