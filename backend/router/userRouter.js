@@ -4,6 +4,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const nodeMailer = require('nodemailer');
+const tokenVerify = require('../middleware/tokenVerify');
 
 //********************** New User Register **************************//
 router.post('/register', async (req, res) => {
@@ -61,7 +62,7 @@ router.post('/login', async (req, res) => {
 })
 
 //********************** Update Current User Details **************************//
-router.put('/updateUser', async (req, res) => {
+router.put('/updateUser', tokenVerify, async (req, res) => {
      try {
           req.body.password = bcrypt.hashSync(req.body.password, 10);
           const updateCurrentUser = await userModel.findByIdAndUpdate(req.body._id, req.body, { new: true });
@@ -77,7 +78,7 @@ router.put('/updateUser', async (req, res) => {
 })
 
 //********************** Find Email Address **************************//
-router.get('/allUser', async (req, res) => {
+router.get('/allUser', tokenVerify, async (req, res) => {
      try {
           const allUser = await userModel.find({});
           if (allUser && allUser.length !== 0 & allUser != undefined) {
@@ -91,7 +92,7 @@ router.get('/allUser', async (req, res) => {
 })
 
 //********************** Find Current User **************************//
-router.get('/currentUser', async (req, res) => {
+router.get('/currentUser', tokenVerify, async (req, res) => {
      try {
           const currentUser = await userModel.findOne({ email: req.body.email }).select(['-password']);
           if (currentUser && currentUser !== null) {

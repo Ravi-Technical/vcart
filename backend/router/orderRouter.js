@@ -6,9 +6,10 @@ const orderModel = require('../models/orderModel');
 const productModel = require('../models/productModel');
 const nodemailer = require('nodemailer');
 const userModel = require('../models/userModel');
+const tokenVerify = require('../middleware/tokenVerify');
 
 // Order API 
-router.post('/order', async (req, res) => {
+router.post('/order', tokenVerify, async (req, res) => {
   let d = new Date();
   let date = ("0" + d.getDate()).slice(-2);
   let month = ("0" + (d.getMonth() + 1)).slice(-2);
@@ -298,7 +299,7 @@ router.post('/order', async (req, res) => {
 });
 
 // Get orders list API
-router.get('/order-list/:id', async (req, res) => {
+router.get('/order-list/:id', tokenVerify, async (req, res) => {
   try {
     const userID = req.params.id;
     let itemId = [];

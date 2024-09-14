@@ -2,9 +2,13 @@ const express = require('express');
 const router = express.Router();
 const wishlistModel = require('../models/wishlistModel');
 const productModel = require('../models/productModel');
+const tokenVerify = require('../middleware/tokenVerify');
+
+
+
 
 // Create Wishlist API
-router.post('/wishlist', async(req, res)=>{
+router.post('/wishlist', tokenVerify, async(req, res)=>{
      try{
         const wishlist_exists = await wishlistModel.findOne({productId:req.body.productId}); 
         if(!wishlist_exists){
@@ -52,7 +56,7 @@ router.post('/wishlist', async(req, res)=>{
  });
 
  // Update Wishlisted Product API
- router.delete('/update-wishlist-product/:productId', async(req, res)=>{
+ router.delete('/update-wishlist-product/:productId', tokenVerify, async(req, res)=>{
     try {
       const productId = req.params.productId;
       const updatedWishlist = await wishlistModel.find({}).findOneAndDelete({productId:productId}, {new:true});
@@ -68,7 +72,7 @@ router.post('/wishlist', async(req, res)=>{
 
 
  // Single User Get Wishlist Product 
- router.get('/unique-wishlist-product/:uId', async(req, res)=>{
+ router.get('/unique-wishlist-product/:uId', tokenVerify, async(req, res)=>{
     const userId = req.params.uId;
     let wow = [];
     const getItem = await wishlistModel.find({userId:userId}).populate(['productId']).select(['productId']);
@@ -79,14 +83,6 @@ router.post('/wishlist', async(req, res)=>{
     res.send(wow);
  });
  
-
-
-
-
-
-
-
-
 
 
 
