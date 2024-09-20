@@ -39,12 +39,12 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
      try {
           const userDetails = await userModel.findOne({ email: req.body.email });
-          const expired = { expiresIn: '1d' };
+          //const expired = { expiresIn: '1d' };
           if (userDetails) {
                if (userDetails.status == true) {
                     let comparePassword = bcrypt.compareSync(req.body.password, userDetails.password);
                     if (comparePassword) {
-                         let token = jwt.sign({ email: userDetails.email }, process.env.TOKEN_SECRET_KET, expired);
+                         let token = jwt.sign({ email: userDetails.email }, process.env.TOKEN_SECRET_KET, {expiresIn: '24h'});
                          let updateToken = await userModel.findOneAndUpdate({ email: req.body.email }, { $set: { token: token } }, { new: true });
                          res.status(201).send([userDetails.name, token, updateToken]);
                     } else{
