@@ -1,7 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-
-
 import { userLoginModel, userRegisterModel } from '../components/models/userModel';
 import { addToCartModel } from '../components/models/product';
 import { Subject } from 'rxjs';

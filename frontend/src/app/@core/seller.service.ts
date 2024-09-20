@@ -9,9 +9,9 @@ import { BehaviorSubject, Subject } from 'rxjs';
 
 export class SellerService {
 
-  //apiUrl = "https://vcart-backend-1kvp.onrender.com/api/v1/";
+  apiUrl = "https://vcart-backend-1kvp.onrender.com/api/v1/";
 
-  apiUrl = "http://localhost:3000/api/v1/";
+  //apiUrl = "http://localhost:3000/api/v1/";
 
   isSellerLoggedIn = new Subject<string>();
 
@@ -19,6 +19,8 @@ export class SellerService {
 
   
 
+
+  
   constructor(private _http: HttpClient) { }
 
   //************************************ Product API's ****************************************//
