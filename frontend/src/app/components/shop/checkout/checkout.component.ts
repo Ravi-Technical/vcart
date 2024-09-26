@@ -150,6 +150,7 @@ export class CheckoutComponent implements OnInit {
 
   // Payment Gateway Integration
   payNow(OrderData: any) {
+      
     const getProduct = localStorage.getItem('products') !=='undefined' ? JSON.parse(localStorage.getItem('products')!):null;
     const getUserDetail = localStorage.getItem('tempData') !=='undefined' ? JSON.parse(localStorage.getItem('tempData')!):null;
     let orderItems: any = [];
@@ -174,6 +175,8 @@ export class CheckoutComponent implements OnInit {
         const paymentId = response.razorpay_payment_id;
         const signature = response.razorpay_signature;
         if (paymentId && paymentId !== null && paymentId !== undefined) {
+          OrderData.totalPrice = newTotalPrice;
+           
           this.dataSource.genericOrderSubmit(OrderData).subscribe((res) => {
             if (res && res != null) {
               localStorage.removeItem('products');
