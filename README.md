@@ -1,4 +1,4 @@
-# <h3>We have make Ecommerce Web Application (MEAN Stack)</h3>
+# <h3>I have made Ecommerce Web Application (MEAN Stack)</h3>
 Using below technologies like details <br>
 For demo user & demo seller access credentials below... <br>
 ------------------------- Demo User ----------------------------- <br>
