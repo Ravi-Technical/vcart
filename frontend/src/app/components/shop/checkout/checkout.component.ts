@@ -190,7 +190,7 @@ export class CheckoutComponent implements OnInit {
       },
 
       prefill: {
-        name: "Ravi Technical",
+        name: "Ravi Shankar",
         email: "ravis3682@gmail.com",
         phone: 8127599046
       },
@@ -255,4 +255,5 @@ export class CheckoutComponent implements OnInit {
    
 
 }  // END CLASS HERE
+
 
