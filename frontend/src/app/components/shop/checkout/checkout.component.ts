@@ -167,7 +167,7 @@ export class CheckoutComponent implements OnInit {
       currency: "USD",
       amount:OrderData.totalPrice,
       name: "Ravi Technical",
-      key: 'rzp_test_IKMCYQgD15hHoP',
+      key: 'rzp_test_S9ZbmZtFSnqru0',
       orderId: "order_Lzp47ByQrH0LJz",
       handler: (response:any) => {
         this.wraperLoader.style.display="block";
@@ -255,3 +255,4 @@ export class CheckoutComponent implements OnInit {
    
 
 }  // END CLASS HERE
+
