@@ -87,6 +87,7 @@
                                               </button>
                                               </div> -->
                                             <div class="col-lg-6">
+                                                <img *ngIf="!imageUrl" id="imgPreview" src="https://res.cloudinary.com/dpfj5dzeg/image/upload/v1775726590/images_pbwxsp.png"
                                                 <img *ngIf="imageUrl" id="imgPreview" [src]="imageUrl">
                                                 <span *ngIf="closeFlag" id="remove" (click)="removeImg()">X</span>
                                             </div>
