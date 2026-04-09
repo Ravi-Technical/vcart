@@ -35,6 +35,9 @@ export class NewProductComponent implements OnInit {
   vImgUrl:any = " ";
   wraperLoader:any;
 
+  selectedFile!: File;
+  imageUrl: string = '';
+
   constructor(private eleRef: ElementRef, private productService: SellerService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -47,6 +50,7 @@ export class NewProductComponent implements OnInit {
 
     // ****** Show Product Image ******//
      imagePreview(event: any) {
+       debugger;
       if (event.target.files && event.target.files[0] ) {
         this.image =  event.target.files[0] as File;
         this.closeFlag = true;
@@ -56,23 +60,37 @@ export class NewProductComponent implements OnInit {
           this.productImagebase64 = reader.result;
         }
         this.imgUrl = URL.createObjectURL(event.target.files[0]); 
+        console.log("Image",  this.imgUrl );
       }
     }
+   // async uploadImage(){
+   //      let storage = getStorage(app);
+   //      let storageRef = ref(storage, 'products_images/' + Date.now() + "_" + this.image.name);
+   //      await uploadBytes(storageRef, this.image);
+   //      this.uploadImageUrl = await getDownloadURL(storageRef); 
+   // }    
 
-   async uploadImage(){
-        let storage = getStorage(app);
-        let storageRef = ref(storage, 'products_images/' + Date.now() + "_" + this.image.name);
-        await uploadBytes(storageRef, this.image);
-        this.uploadImageUrl = await getDownloadURL(storageRef); 
-   }    
-
+ // Cloudinary Storage Implemented
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
+  uploadNewImage() {
+    if (!this.selectedFile) return;
+    this.productService.uploadImage(this.selectedFile)
+      .subscribe((res: any) => {
+        console.log(res);
+        this.imageUrl = res.secure_url;
+      });
+  }
+ 
+   
   // ****** Add New Product ******//
   async add_new_product(form: newProductInterface) {
     this.wraperLoader.style.display="block";
-    let storage = getStorage(app);
-    let storageRef = ref(storage, 'products_images/' + Date.now() + "_" + this.image.name);
-    await uploadBytes(storageRef, this.image);
-    this.uploadImageUrl = await getDownloadURL(storageRef);
+    //let storage = getStorage(app);
+    //let storageRef = ref(storage, 'products_images/' + Date.now() + "_" + this.image.name);
+    //await uploadBytes(storageRef, this.image);
+    //this.uploadImageUrl = await getDownloadURL(storageRef);
     if(!form.isFeatured){
       form.isFeatured = false;
     }
@@ -85,7 +103,7 @@ export class NewProductComponent implements OnInit {
       dateTime: dateTime.toLocaleString('en-IT'),
       discount: this.discount,
       quantity : 1,
-      image: this.uploadImageUrl
+      image: this.imageUrl
     }
     Object.assign(form, addonFields);
     console.log("After Seller form data => ", form);
