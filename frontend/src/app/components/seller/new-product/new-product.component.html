@@ -76,12 +76,17 @@
                                             </div>
                                         </div>
                                         <div class="row mt-4">
-                                            <div class="col-lg-6">
+                                            <div class="col-lg-4">
                                                 <label style="font-size:14px;" class="mt-2 pb-2">Upload product single image *</label>
-                                                <input type="file" id="uploadProduct" (change)="imagePreview($event)"
+                                                <input type="file" id="uploadProduct" (change)="onFileSelected($event)"
                                                     name="image" class="form-control" ngModel required/>
                                             </div>
-                                            <div class="col-lg-6">
+                                              <div class="col-lg-4">
+                                              <button class="btn btn-primary" (click)="uploadNewImage()">
+                                              Upload Image
+                                              </button>
+                                              </div>
+                                            <div class="col-lg-4">
                                                     <img id="imgPreview" [src]="imgUrl">
                                                 <span *ngIf="closeFlag" id="remove" (click)="removeImg()">X</span>
                                             </div>
