@@ -45,6 +45,9 @@ export class UpdateProductComponent implements OnInit {
 
   productImagebase64:any;
 
+  selectedFile!: File;
+  imageUrl: string = '';
+
   constructor(private route: ActivatedRoute, private productService: SellerService, private router: Router) { }
 
   ngOnInit(): void {
@@ -114,12 +117,23 @@ export class UpdateProductComponent implements OnInit {
     }
   }
 
+   //***************************************** Cloudinary Storage Implemented ******************************************//
+  onFileSelected(event: any) {
+    this.closeFlag = true;
+    this.selectedFile = event.target.files[0];
+     console.log("this.selectedFile",  this.selectedFile );
+    if (!this.selectedFile) return;
+    this.productService.uploadImage(this.selectedFile)
+      .subscribe((res: any) => {
+        this.imageUrl = res.secure_url;
+      });
+  }
   // ****** Remove Preview of Product ******//
   removeImg() {
     let aa = document.getElementById("imgPreview");
     let uploadImg: any = document.getElementById("uploadProduct");
     aa?.removeAttribute('src');
-    aa?.setAttribute('src', 'http://via.placeholder.com/180');
+    aa?.setAttribute('src', 'https://res.cloudinary.com/dpfj5dzeg/image/upload/v1775726590/images_pbwxsp.png');
     this.closeFlag = false;
     uploadImg.value = "";
   }
