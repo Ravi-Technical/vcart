@@ -126,6 +126,7 @@ export class UpdateProductComponent implements OnInit {
     this.productService.uploadImage(this.selectedFile)
       .subscribe((res: any) => {
         this.imageUrl = res.secure_url;
+        this.productImagebase64 = this.imageUrl;
       });
   }
   // ****** Remove Preview of Product ******//
