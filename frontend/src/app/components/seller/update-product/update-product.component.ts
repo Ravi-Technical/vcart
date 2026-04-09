@@ -80,7 +80,6 @@ export class UpdateProductComponent implements OnInit {
   }
 
   // ****** Get All Category ******//
-  
   allBrand(){
     this.productService.getAllBrand().subscribe((res)=>{
       //console.log("========= All Brands =========", res);
@@ -101,7 +100,6 @@ export class UpdateProductComponent implements OnInit {
       }
     })
   }
-
 
   // ****** Show Product Image ******//
   imagePreview(event: any) {
