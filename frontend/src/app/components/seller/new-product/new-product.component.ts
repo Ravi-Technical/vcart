@@ -156,7 +156,7 @@ export class NewProductComponent implements OnInit {
     let aa = document.getElementById("imgPreview");
     let uploadImg: any = document.getElementById("uploadProduct");
     aa?.removeAttribute('src');
-    aa?.setAttribute('src', 'http://via.placeholder.com/180');
+    aa?.setAttribute('src', 'https://res.cloudinary.com/dpfj5dzeg/image/upload/v1775726590/images_pbwxsp.png');
     this.closeFlag = false;
     uploadImg.value = "";
   }
