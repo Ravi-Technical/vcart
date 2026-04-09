@@ -25,6 +25,7 @@ export class SellerService {
 
   //************************************ Cloudinary Product Upload Configuration ****************************************//
   uploadImage(file: File) {
+    debugger;
   const formData = new FormData();
   formData.append('file', file);
   // REQUIRED
