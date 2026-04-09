@@ -17,12 +17,24 @@ export class SellerService {
 
   sellerLogOut = new Subject<boolean>();
 
-  
-
-
+  cloudName = 'ml_default';
+  uploadPreset = 'V-Cart-Product-Images';
   
   constructor(private _http: HttpClient) { }
 
+
+  //************************************ Cloudinary Product Upload Configuration ****************************************//
+  uploadImage(file: File) {
+  const formData = new FormData();
+
+  formData.append('file', file);
+  formData.append('upload_preset', this.uploadPreset);
+
+  const url =
+    `https://api.cloudinary.com/v1_1/${this.cloudName}/image/upload`;
+
+  return this.http.post(url, formData);
+}
   //************************************ Product API's ****************************************//
   // Add New Product from Here
   addNewProduct(newProduct: newProductInterface) {
