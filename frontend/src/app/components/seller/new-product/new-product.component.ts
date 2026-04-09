@@ -70,16 +70,13 @@ export class NewProductComponent implements OnInit {
 
  //***************************************** Cloudinary Storage Implemented ******************************************//
   onFileSelected(event: any) {
-    debugger;
+    this.closeFlag = true;
     this.selectedFile = event.target.files[0];
      console.log("this.selectedFile",  this.selectedFile );
     if (!this.selectedFile) return;
     this.productService.uploadImage(this.selectedFile)
       .subscribe((res: any) => {
-        debugger
-        console.log(res);
         this.imageUrl = res.secure_url;
-        console.log("this.imageUrl",  this.imageUrl);
       });
   }
 
@@ -109,6 +106,7 @@ export class NewProductComponent implements OnInit {
     this.productService.addNewProduct(form).subscribe(res => {
       if (res && res != "") {
         alert("New Product has been created successfully");
+        this.closeFlag = false;
         this.router.navigate(['/seller/product-list']);
       }
     });
