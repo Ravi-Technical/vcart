@@ -50,7 +50,6 @@ export class NewProductComponent implements OnInit {
 
     // ****** Show Product Image ******//
      imagePreview(event: any) {
-       debugger;
       if (event.target.files && event.target.files[0] ) {
         this.image =  event.target.files[0] as File;
         this.closeFlag = true;
@@ -60,7 +59,6 @@ export class NewProductComponent implements OnInit {
           this.productImagebase64 = reader.result;
         }
         this.imgUrl = URL.createObjectURL(event.target.files[0]); 
-        console.log("Image",  this.imgUrl );
       }
     }
    // async uploadImage(){
@@ -72,7 +70,9 @@ export class NewProductComponent implements OnInit {
 
  // Cloudinary Storage Implemented
   onFileSelected(event: any) {
+    debugger;
     this.selectedFile = event.target.files[0];
+     console.log("this.selectedFile",  this.selectedFile );
   }
   uploadNewImage() {
     if (!this.selectedFile) return;
@@ -80,6 +80,7 @@ export class NewProductComponent implements OnInit {
       .subscribe((res: any) => {
         console.log(res);
         this.imageUrl = res.secure_url;
+        console.log("this.imageUrl",  this.imageUrl);
       });
   }
  
