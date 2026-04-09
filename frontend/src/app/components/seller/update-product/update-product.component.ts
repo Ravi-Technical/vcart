@@ -62,7 +62,8 @@ export class UpdateProductComponent implements OnInit {
     this.productService.getSingleProduct(this.productId).subscribe((res: any) => {
       this.productModel = res ? res : '';
       console.log("backend responve ==== ", this.productModel);
-      this.imgUrl = res.image;
+      //this.imgUrl = res.image;
+      this.imageUrl = res.image;
       this.closeFlag = true;
       // this.categoryName = this.productModel.category;
       //  this.categoryName = Object.entries(this.categoryName);
