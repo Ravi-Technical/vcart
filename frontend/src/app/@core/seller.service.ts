@@ -27,7 +27,12 @@ export class SellerService {
   uploadImage(file: File) {
   const formData = new FormData();
   formData.append('file', file);
-  formData.append('folder', this.uploadPreset);
+  // REQUIRED
+  formData.append(
+  'upload_preset',
+  this.uploadPreset
+  );
+  formData.append('upload_preset', this.uploadPreset);
   const url =`https://api.cloudinary.com/v1_1/${this.cloudName}/image/upload`;
     return this._http.post(url, formData);
 }
