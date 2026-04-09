@@ -70,14 +70,15 @@
                                         <div class="row mt-4">
                                             <div class="col-lg-6">
                                                 <label class="mt-2 pb-2">Upload product single image</label>
-                                                <input type="file" id="uploadProduct" (change)="imagePreview($event)"
+                                                <input type="file" id="uploadProduct" (change)="onFileSelected($event)"
                                                     name="image" class="form-control" ngModel />
                                             </div>
                                             <div class="col-lg-6">
-                                                <img id="imgPreview" [src]="imgUrl">
+                                                <img *ngIf="imageUrl" id="imgPreview" [src]="imageUrl">
                                                 <span *ngIf="closeFlag" id="remove" (click)="removeImg()">X</span>
                                             </div>
                                         </div>
+                                      
                                         <div class="row mt-4">
                                             <div class="col-lg-6">
                                                 <textarea type="text" placeholder="Short Description"
