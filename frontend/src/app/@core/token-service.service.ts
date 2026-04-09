@@ -16,6 +16,10 @@ export class TokenServiceService implements HttpInterceptor {
   token = localStorage.getItem('sellerToken');
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+     // Skip Cloudinary requests
+  if (req.url.includes('api.cloudinary.com')) {
+    return next.handle(req);
+  }
 
     if (!this.token) {
       return next.handle(req);
