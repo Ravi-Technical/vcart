@@ -68,23 +68,21 @@ export class NewProductComponent implements OnInit {
    //      this.uploadImageUrl = await getDownloadURL(storageRef); 
    // }    
 
- // Cloudinary Storage Implemented
+ //***************************************** Cloudinary Storage Implemented ******************************************//
   onFileSelected(event: any) {
     debugger;
     this.selectedFile = event.target.files[0];
      console.log("this.selectedFile",  this.selectedFile );
-  }
-  uploadNewImage() {
     if (!this.selectedFile) return;
     this.productService.uploadImage(this.selectedFile)
       .subscribe((res: any) => {
+        debugger
         console.log(res);
         this.imageUrl = res.secure_url;
         console.log("this.imageUrl",  this.imageUrl);
       });
   }
- 
-   
+
   // ****** Add New Product ******//
   async add_new_product(form: newProductInterface) {
     this.wraperLoader.style.display="block";
